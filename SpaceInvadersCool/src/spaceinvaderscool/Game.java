@@ -26,6 +26,8 @@ public class Game implements Runnable {
     private Player player;          // player
     private KeyManager keyManager;
     private Shot shotPlayer;
+    //private Alien alien;
+    private LinkedList<Alien> listaAliens;
     
    /**
      * to create title, width and height and set the game is still not running
@@ -79,6 +81,21 @@ public class Game implements Runnable {
          display.getJframe().addKeyListener(keyManager);
          
          shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, 0, this);
+         
+         // alien = new Alien(100,100,12,12,this);
+         
+         listaAliens = new LinkedList<Alien>();
+         
+         int yo = 5;
+         for (int i=1; i<=4; i++) {
+             int xo = 150;
+             for (int j=1; j<=6; j++) {
+                 Alien alien = new Alien(xo, yo, 12, 12, this);
+                 listaAliens.add(alien);
+                 xo += 20;
+             }
+             yo += 15;
+         }
         
     }
     
@@ -156,6 +173,11 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 290, this.width, 290);
             player.render(g);
+            //alien.render(g);
+            
+            for (Alien alien : listaAliens) {
+                alien.render(g);
+            }
             
 
            

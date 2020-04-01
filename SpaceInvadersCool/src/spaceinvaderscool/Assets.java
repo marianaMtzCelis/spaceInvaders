@@ -17,6 +17,7 @@ public class Assets {
     public static BufferedImage player;
     public static BufferedImage playerShot;
     public static BufferedImage alienShot;
+    public static BufferedImage alien;
     
     
      public static void init() {
@@ -24,6 +25,7 @@ public class Assets {
         player = ImageLoader.loadImage("/images/player.png");
         playerShot = ImageLoader.loadImage("/images/shot.png");
         alienShot = ImageLoader.loadImage("/images/bomb.png");
+        alien = ImageLoader.loadImage("/images/alien.png");
         
         
     }
