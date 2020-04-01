@@ -78,7 +78,7 @@ public class Game implements Runnable {
          
          display.getJframe().addKeyListener(keyManager);
          
-         shotPlayer = new Shot(player.getX(), player.getY(), 5, 10, -4, 0, this);
+         shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, 0, this);
         
     }
     

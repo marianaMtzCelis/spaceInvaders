@@ -32,7 +32,7 @@ public class Shot extends Item {
         if (isShot) {
         setY(y+dy);
         } else {
-            setX(game.getPlayer().getX()+5);
+            setX(game.getPlayer().getX()+6);
             setY(game.getPlayer().getY());
         }
         
