@@ -152,6 +152,7 @@ public class Game implements Runnable {
     
      for (Alien alien : listaAliens) {
          alien.tick();
+         alien.getShot().tick();
          if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
              for (Alien alien2 : listaAliens) {
                  alien2.setY(alien2.getY() + 15);
@@ -162,6 +163,7 @@ public class Game implements Runnable {
                  }
              }
          }
+        
      }
     
     }
@@ -190,6 +192,7 @@ public class Game implements Runnable {
             
             for (Alien alien : listaAliens) {
                 alien.render(g);
+                alien.getShot().render(g);
             }
             
 

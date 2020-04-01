@@ -15,11 +15,13 @@ public class Alien extends Item {
     
     private Game game;
     private int direction;
+    private Shot shot;
 
     public Alien(int x, int y, int width, int height, Game game, int direction) {
         super(x, y, width, height);
         this.game = game;
         this.direction = direction;
+        shot = new Shot(x,y,3,3,2,1,game);
     }
 
     public int getX() {
@@ -49,7 +51,10 @@ public class Alien extends Item {
     public int getDirection() {
         return direction;
     }
-    
+
+    public Shot getShot() {
+        return shot;
+    }
     
 
     @Override
