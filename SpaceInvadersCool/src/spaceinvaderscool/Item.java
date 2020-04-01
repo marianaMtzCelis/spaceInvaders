@@ -15,6 +15,7 @@ import java.awt.Rectangle;
 public abstract class Item {
     protected int x;        // to store x position
     protected int y;        // to store y position
+    protected int dx;
     protected int width;    // to store width
     protected int height;   // to store height
     
@@ -30,6 +31,7 @@ public abstract class Item {
         this.y = y;
         this.width = width;
         this.height = height;
+//        this.dx = 2;
     }
 
     /**

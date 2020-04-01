@@ -36,6 +36,8 @@ public class Game implements Runnable {
         this.title = title;
         this.width = width;
         this.height = height;
+        running = false;
+        keyManager = new KeyManager();
    
     }
 
@@ -119,7 +121,8 @@ public class Game implements Runnable {
    
     
     private void tick() {
-     //   keyManager.tick();
+        
+     keyManager.tick();
      player.tick();
     
     }

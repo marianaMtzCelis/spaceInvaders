@@ -14,10 +14,9 @@ import java.awt.event.KeyListener;
  */
 public class KeyManager implements KeyListener {
     
-    public boolean q;      // flag to move north west the player
-    public boolean p;    // flag to move north east the player
-    public boolean a;    // flag to move south west the player
-    public boolean l;   // flag to move south east the player
+    public boolean right;      // flag to move right the player
+    public boolean left;    // flag to move left the player
+   
 
     private boolean keys[];  // to store all the flags for every key
     
@@ -45,10 +44,8 @@ public class KeyManager implements KeyListener {
      * to enable or disable moves on every tick
      */
     public void tick() {
-        q = keys[KeyEvent.VK_Q];
-        p = keys[KeyEvent.VK_P];
-        a = keys[KeyEvent.VK_A];
-        l = keys[KeyEvent.VK_L];
+        right = keys[KeyEvent.VK_RIGHT];
+        left = keys[KeyEvent.VK_LEFT];
     }
 }
 

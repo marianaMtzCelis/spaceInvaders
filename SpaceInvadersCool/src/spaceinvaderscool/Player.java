@@ -20,6 +20,7 @@ public class Player extends Item {
         super(x, y, width, height);
         this.direction = direction;
         this.game = game;
+        this.dx = 2;
     }
 
     /**
@@ -75,29 +76,21 @@ public class Player extends Item {
     @Override
     public void tick() {
         // moving player depending on flags
-//        if (game.getKeyManager().q) {
-//           setY(getY() - 1);
-//           setX(getX() - 1);
-//          
-//        }
-//        if (game.getKeyManager().a) {
-//           setY(getY() + 1);
-//           setX(getX() - 1);
-//         
-//        }
+        if (game.getKeyManager().right) {
+           setX(this.x+dx);
+          
+        }
+        if (game.getKeyManager().left) {
+           setX(this.x-dx);
+         
+        }
     
         // reset x position and y position if colision
-        if (getX() + 60 >= game.getWidth()) {
-            setX(game.getWidth() - 60);
+        if (getX() + 20 >= game.getWidth()) {
+            setX(game.getWidth() - 20);
         }
-        else if (getX() <= -30) {
-            setX(-30);
-        }
-        if (getY() + 80 >= game.getHeight()) {
-            setY(game.getHeight() - 80);
-        }
-        else if (getY() <= -20) {
-            setY(-20);
+        else if (getX() <= 5) {
+            setX(5);
         }
     }
 
