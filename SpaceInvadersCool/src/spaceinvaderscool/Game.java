@@ -90,7 +90,7 @@ public class Game implements Runnable {
          for (int i=1; i<=4; i++) {
              int xo = 150;
              for (int j=1; j<=6; j++) {
-                 Alien alien = new Alien(xo, yo, 12, 12, this);
+                 Alien alien = new Alien(xo, yo, 12, 12, this, 1);
                  listaAliens.add(alien);
                  xo += 20;
              }
@@ -150,6 +150,19 @@ public class Game implements Runnable {
          shotPlayer.setIsShot(true);
      }
     
+     for (Alien alien : listaAliens) {
+         alien.tick();
+         if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
+             for (Alien alien2 : listaAliens) {
+                 alien2.setY(alien2.getY() + 15);
+                 if (alien2.getDirection() == 0) {
+                     alien2.setDirection(1);
+                 } else {
+                     alien2.setDirection(0);
+                 }
+             }
+         }
+     }
     
     }
     
