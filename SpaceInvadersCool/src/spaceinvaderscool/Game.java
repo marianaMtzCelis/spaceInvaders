@@ -153,7 +153,10 @@ public class Game implements Runnable {
             g = bs.getDrawGraphics();
             g.drawImage(Assets.background, 0, 0, width, height, null);
             shotPlayer.render(g);
+            g.setColor(Color.green);
+            g.drawLine(0, 290, this.width, 290);
             player.render(g);
+            
 
            
             
