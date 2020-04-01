@@ -143,7 +143,7 @@ public class Game implements Runnable {
             player.render(g);
            
             
-            // displays vidas and score
+//            // displays vidas and score
 //            g.setColor(Color.black);
 //            g.drawString("Vidas:" + vidas, 100, 100);
 //            g.drawString("Score: " + score, 100, 120);
