@@ -23,7 +23,7 @@ public class Game implements Runnable {
     private int height;             // height of the window
     private Thread thread;          // thread to create the game
     private boolean running;        // to set the game
-//    private Player player;          // player
+    private Player player;          // player
     private KeyManager keyManager;
     
    /**
@@ -59,10 +59,10 @@ public class Game implements Runnable {
      * To get the player of the game window
      * @return a <code>Playert</code> value with the player
      */
-//    public Player getPlayer() {
-//        return player;
-//    }
-//    
+    public Player getPlayer() {
+        return player;
+    }
+    
     
     /**
      * initializing the display window of the game
@@ -70,6 +70,8 @@ public class Game implements Runnable {
     private void init() {
          display = new Display(title, getWidth(), getHeight());  
          Assets.init();
+         
+         player = new Player(270, 280, 1, 15, 10, this);
          
          display.getJframe().addKeyListener(keyManager);
         
@@ -118,6 +120,7 @@ public class Game implements Runnable {
     
     private void tick() {
      //   keyManager.tick();
+     player.tick();
     
     }
     
@@ -137,7 +140,7 @@ public class Game implements Runnable {
         {
             g = bs.getDrawGraphics();
             g.drawImage(Assets.background, 0, 0, width, height, null);
-            //player.render(g);
+            player.render(g);
            
             
             // displays vidas and score

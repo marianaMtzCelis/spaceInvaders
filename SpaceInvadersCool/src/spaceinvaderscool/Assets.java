@@ -14,9 +14,12 @@ import java.awt.image.BufferedImage;
 public class Assets {
     
     public static BufferedImage background; // to store background image
+    public static BufferedImage player;
+    
     
      public static void init() {
         background = ImageLoader.loadImage("/images/Background.png");
+        player = ImageLoader.loadImage("/images/player.png");
         
         
     }
