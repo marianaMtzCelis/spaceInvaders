@@ -15,11 +15,15 @@ public class Assets {
     
     public static BufferedImage background; // to store background image
     public static BufferedImage player;
+    public static BufferedImage playerShot;
+    public static BufferedImage alienShot;
     
     
      public static void init() {
         background = ImageLoader.loadImage("/images/Background.png");
         player = ImageLoader.loadImage("/images/player.png");
+        playerShot = ImageLoader.loadImage("/images/shot.png");
+        alienShot = ImageLoader.loadImage("/images/bomb.png");
         
         
     }

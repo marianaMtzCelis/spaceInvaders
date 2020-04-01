@@ -16,6 +16,7 @@ public abstract class Item {
     protected int x;        // to store x position
     protected int y;        // to store y position
     protected int dx;
+    protected int dy;
     protected int width;    // to store width
     protected int height;   // to store height
     

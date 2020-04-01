@@ -25,6 +25,7 @@ public class Game implements Runnable {
     private boolean running;        // to set the game
     private Player player;          // player
     private KeyManager keyManager;
+    private Shot shotPlayer;
     
    /**
      * to create title, width and height and set the game is still not running
@@ -76,6 +77,8 @@ public class Game implements Runnable {
          player = new Player(270, 280, 1, 15, 10, this);
          
          display.getJframe().addKeyListener(keyManager);
+         
+         shotPlayer = new Shot(player.getX(), player.getY(), 5, 10, -4, 0, this);
         
     }
     
@@ -124,6 +127,12 @@ public class Game implements Runnable {
         
      keyManager.tick();
      player.tick();
+     shotPlayer.tick();
+     
+     if (keyManager.space) {
+         shotPlayer.setIsShot(true);
+     }
+    
     
     }
     
@@ -143,7 +152,9 @@ public class Game implements Runnable {
         {
             g = bs.getDrawGraphics();
             g.drawImage(Assets.background, 0, 0, width, height, null);
+            shotPlayer.render(g);
             player.render(g);
+
            
             
 //            // displays vidas and score

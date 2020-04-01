@@ -16,6 +16,7 @@ public class KeyManager implements KeyListener {
     
     public boolean right;      // flag to move right the player
     public boolean left;    // flag to move left the player
+    public boolean space;
    
 
     private boolean keys[];  // to store all the flags for every key
@@ -46,6 +47,7 @@ public class KeyManager implements KeyListener {
     public void tick() {
         right = keys[KeyEvent.VK_RIGHT];
         left = keys[KeyEvent.VK_LEFT];
+        space = keys[KeyEvent.VK_SPACE];
     }
 }
 
