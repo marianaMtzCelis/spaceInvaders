@@ -18,6 +18,9 @@ public class Alien extends Item {
     private Shot shot;
     private int rand;
     private boolean isVisible;
+    private Animation plasmaAnimation;
+    private boolean justCrashed;
+    private int counterCrashed;
 
     // Constructor for Alien
     public Alien(int x, int y, int width, int height, Game game, int direction) {
@@ -26,6 +29,10 @@ public class Alien extends Item {
         this.direction = direction;
         shot = new Shot(x, y, 3, 3, 2, this, 1, game);
         isVisible = true;
+        justCrashed = false;
+        counterCrashed = 50;
+
+        this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
     }
 
     /**
@@ -103,8 +110,14 @@ public class Alien extends Item {
     public void setIsVisible(boolean isVisible) {
         this.isVisible = isVisible;
     }
-    
-    
+
+    public boolean isJustCrashed() {
+        return justCrashed;
+    }
+
+    public void setJustCrashed(boolean justCrashed) {
+        this.justCrashed = justCrashed;
+    }
 
     @Override
     public void tick() {
@@ -122,6 +135,18 @@ public class Alien extends Item {
         } else {
             setX(this.getX() + 1);
         }
+
+        // Animation
+//        if (justCrashed) {
+//                if (counterCrashed > 0) {
+//                plasmaAnimation.tick();
+//                counterCrashed--;
+//                } else {
+//                    justCrashed = false;
+//                    counterCrashed = 20;
+//                    isVisible = false;    
+//                }
+//            }
     }
 
     /**
@@ -132,7 +157,16 @@ public class Alien extends Item {
     @Override
     public void render(Graphics g) {
         if (isVisible) {
-        g.drawImage(Assets.alien, getX(), getY(), getWidth(), getHeight(), null);
+            g.drawImage(Assets.alien, getX(), getY(), getWidth(), getHeight(), null);
+        }
+
+        if (justCrashed) {
+            counterCrashed--;
+            g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
+            if (counterCrashed <= 0) {
+                isVisible = false;
+                this.setY(-20);
+            }
         }
     }
 

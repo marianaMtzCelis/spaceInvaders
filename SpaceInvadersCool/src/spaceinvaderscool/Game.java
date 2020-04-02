@@ -86,7 +86,7 @@ public class Game implements Runnable {
 
         display.getJframe().addKeyListener(keyManager);
 
-        shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, player, 0, this);
+        shotPlayer = new Shot(player.getX(), player.getY(), 5, 5, -4, player, 0, this);
 
         listaAliens = new LinkedList<Alien>();
 
@@ -184,9 +184,8 @@ public class Game implements Runnable {
             
             // checks if aliens and shotPlayer collide
             if (shotPlayer.colision(alien)) {
-                alien.setY(-20);
                 shotPlayer.setIsShot(false); 
-                alien.setIsVisible(false);
+                alien.setJustCrashed(true);
                 alien.getShot().setIsVisible(false);
             }
             

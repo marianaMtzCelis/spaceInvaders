@@ -18,6 +18,7 @@ public class Shot extends Item {
     private Game game;              // to access game's attributes
     private Item item;              // to know who does the shot belong to
     private boolean isVisible;
+    private int counterCrashed;
 
     /**
      * Shot class constructor
@@ -40,6 +41,7 @@ public class Shot extends Item {
         this.game = game;
         isShot = false;
         isVisible = true;
+        counterCrashed = 20;
     }
 
     /**
@@ -61,6 +63,7 @@ public class Shot extends Item {
             if (y <= 0) {
                 isShot = false;
             }
+            
         }
 
         // Alien type of shot
@@ -100,8 +103,7 @@ public class Shot extends Item {
     public void setIsVisible(boolean isVisible) {
         this.isVisible = isVisible;
     }
-    
-    
+     
 
     /**
      * Renders Shot's image
@@ -113,7 +115,8 @@ public class Shot extends Item {
 
         // Player's shot
         if (type == 0) {
-            g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);  
+            //g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
+             g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
         } 
         
         // Alien's shot
