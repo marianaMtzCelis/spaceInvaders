@@ -62,7 +62,7 @@ public class Alien extends Item {
 
     @Override
     public void tick() {
-        rand = (int)(Math.random() * 6) + 10;
+        rand = (int) (Math.random()*100+1);
         shot.tick();
         if (rand == 11) {
             shot.setIsShot(true);
