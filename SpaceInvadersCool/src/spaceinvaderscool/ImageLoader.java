@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Mariana Martínez Celis A01194953
+ * Diego Gomez Cota A00824758
+ * Parcial 2
  */
 package spaceinvaderscool;
 
@@ -16,9 +16,10 @@ import javax.imageio.ImageIO;
  * @author antoniomejorado
  */
 public class ImageLoader {
-    
+
     /**
      * to get an image from the file path
+     *
      * @param path it is the path of the file
      * @return the <bold>BufferedImage</bold> object
      */

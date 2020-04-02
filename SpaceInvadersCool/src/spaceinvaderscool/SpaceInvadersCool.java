@@ -1,13 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Mariana Martínez Celis A01194953
+ * Diego Gomez Cota A00824758
+ * Parcial 2
  */
 package spaceinvaderscool;
 
 /**
  *
- * @author marianamtzcelis
+ * @author marianamtzcelis and diegomezcota
  */
 public class SpaceInvadersCool {
 
@@ -19,5 +19,5 @@ public class SpaceInvadersCool {
         Game g = new Game("Juego", 358, 350);
         g.start();
     }
-    
+
 }

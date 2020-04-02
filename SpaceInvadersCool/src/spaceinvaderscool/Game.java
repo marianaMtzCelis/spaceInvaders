@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Mariana Martínez Celis A01194953
+ * Diego Gomez Cota A00824758
+ * Parcial 2
  */
 package spaceinvaderscool;
 
@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  *
- * @author marianamtzcelis
+ * @author marianamtzcelis and diegomezcota
  */
 public class Game implements Runnable {
 
@@ -25,11 +25,10 @@ public class Game implements Runnable {
     private int height;             // height of the window
     private Thread thread;          // thread to create the game
     private boolean running;        // to set the game
-    private Player player;          // player
-    private KeyManager keyManager;
-    private Shot shotPlayer;
-    //private Alien alien;
-    private LinkedList<Alien> listaAliens;
+    private Player player;          // to set the player
+    private KeyManager keyManager;  // to set key manager
+    private Shot shotPlayer;        // to set player's shot
+    private LinkedList<Alien> listaAliens; // to store miltiple Aliens
 
     /**
      * to create title, width and height and set the game is still not running
@@ -87,22 +86,27 @@ public class Game implements Runnable {
 
         shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, player, 0, this);
 
-        // alien = new Alien(100,100,12,12,this);
         listaAliens = new LinkedList<Alien>();
 
-        int yo = 5;
+        // formation of 24 aliens
+        int yo = 5; // initial y value
         for (int i = 1; i <= 4; i++) {
-            int xo = 150;
+            int xo = 150; //  initial x  value
             for (int j = 1; j <= 6; j++) {
+                // create each alien
                 Alien alien = new Alien(xo, yo, 12, 12, this, 1);
+                // add each alien to the linked list
                 listaAliens.add(alien);
-                xo += 20;
+                xo += 20; // update x position
             }
-            yo += 15;
+            yo += 15; // update y position
         }
 
     }
 
+    /**
+     * Runs the game
+     */
     @Override
     public void run() {
         init();
@@ -143,27 +147,35 @@ public class Game implements Runnable {
         return keyManager;
     }
 
+    /**
+     * Ticks the whole game
+     */
     private void tick() {
 
+        // Ticks each object
         keyManager.tick();
         player.tick();
         shotPlayer.tick();
 
+        // player shoots when user clicks the space bar
         if (keyManager.space) {
             shotPlayer.setIsShot(true);
         }
 
         for (Alien alien : listaAliens) {
-            alien.tick();
-            
+            alien.tick(); // ticks each alien
+
+            // checks if aliens and shotPlayer collide
             if (shotPlayer.colision(alien)) {
                 alien.setX(-20);
                 alien.setY(-20);
             }
 
+            // Repositions aliens once they get to the boundaries on the x axis
             if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
                 for (Alien alien2 : listaAliens) {
                     alien2.setY(alien2.getY() + 15);
+                    // Changes alien's direction 
                     if (alien2.getDirection() == 0) {
                         alien2.setDirection(1);
                     } else {
@@ -193,8 +205,8 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 290, this.width, 290);
             player.render(g);
-            //alien.render(g);
 
+            // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
                 alien.render(g);
                 alien.getShot().render(g);

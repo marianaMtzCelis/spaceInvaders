@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Mariana Martínez Celis A01194953
+ * Diego Gomez Cota A00824758
+ * Parcial 2
  */
 package spaceinvaderscool;
 
@@ -13,15 +13,17 @@ import java.awt.Rectangle;
  * @author antoniomejorado
  */
 public abstract class Item {
+
     protected int x;        // to store x position
     protected int y;        // to store y position
-    protected int dx;
-    protected int dy;
+    protected int dx;       // to store change in x position
+    protected int dy;       /// to store change in y position
     protected int width;    // to store width
     protected int height;   // to store height
-    
+
     /**
      * Set the initial values to create the item
+     *
      * @param x <b>x</b> position of the object
      * @param y <b>y</b> position of the object
      * @param width <b>width</b> width of the object
@@ -37,7 +39,8 @@ public abstract class Item {
 
     /**
      * Get x value
-     * @return x 
+     *
+     * @return x
      */
     public int getX() {
         return x;
@@ -45,7 +48,8 @@ public abstract class Item {
 
     /**
      * Get y value
-     * @return y 
+     *
+     * @return y
      */
     public int getY() {
         return y;
@@ -53,6 +57,7 @@ public abstract class Item {
 
     /**
      * Set x value
+     *
      * @param x to modify
      */
     public void setX(int x) {
@@ -61,6 +66,7 @@ public abstract class Item {
 
     /**
      * Set y value
+     *
      * @param y to modify
      */
     public void setY(int y) {
@@ -69,6 +75,7 @@ public abstract class Item {
 
     /**
      * gets the height from item
+     *
      * @return height
      */
     public int getHeight() {
@@ -77,26 +84,28 @@ public abstract class Item {
 
     /**
      * gets the width from item
+     *
      * @return width
      */
     public int getWidth() {
         return width;
     }
-    
-    
+
     /**
      * To update positions of the item for every tick
      */
     public abstract void tick();
-    
+
     /**
      * To paint the item
+     *
      * @param g <b>Graphics</b> object to paint the item
      */
     public abstract void render(Graphics g);
-    
-     /**
+
+    /**
      * Checks if the player and enemy/goodGuy crash
+     *
      * @param o
      * @return status
      */
@@ -106,12 +115,11 @@ public abstract class Item {
             Rectangle rItem = new Rectangle(this.getX(), this.getY(),
                     this.getWidth(), this.getHeight());
             Item i = (Item) o;
-            Rectangle rOther = new Rectangle(i.getX(), i.getY(), i.getWidth(), 
+            Rectangle rOther = new Rectangle(i.getX(), i.getY(), i.getWidth(),
                     i.getHeight());
-            
-             status = rItem.intersects(rOther);
+
+            status = rItem.intersects(rOther);
         }
         return status;
     }
 }
-
