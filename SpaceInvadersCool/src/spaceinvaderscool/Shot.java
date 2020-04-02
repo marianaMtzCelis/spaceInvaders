@@ -14,9 +14,10 @@ import java.awt.Graphics;
 public class Shot extends Item {
 
     private int type;               // player shot = 0 -- alien shot = 1
-    private boolean isShot = false; // to establish if the shot is being shot
+    private boolean isShot;         // to establish if the shot is being shot
     private Game game;              // to access game's attributes
     private Item item;              // to know who does the shot belong to
+    private boolean isVisible;
 
     /**
      * Shot class constructor
@@ -37,6 +38,8 @@ public class Shot extends Item {
         this.isShot = false;
         this.type = type;
         this.game = game;
+        isShot = false;
+        isVisible = true;
     }
 
     /**
@@ -94,6 +97,12 @@ public class Shot extends Item {
         this.isShot = isShot;
     }
 
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+    
+    
+
     /**
      * Renders Shot's image
      *
@@ -104,10 +113,11 @@ public class Shot extends Item {
 
         // Player's shot
         if (type == 0) {
-            g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
-
-            // Alien's shot
-        } else if (type == 1) {
+            g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);  
+        } 
+        
+        // Alien's shot
+        if (type == 1 && isVisible) {
             g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
         }
 

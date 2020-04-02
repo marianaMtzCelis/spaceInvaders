@@ -17,6 +17,7 @@ public class Alien extends Item {
     private int direction;
     private Shot shot;
     private int rand;
+    private boolean isVisible;
 
     // Constructor for Alien
     public Alien(int x, int y, int width, int height, Game game, int direction) {
@@ -24,6 +25,7 @@ public class Alien extends Item {
         this.game = game;
         this.direction = direction;
         shot = new Shot(x, y, 3, 3, 2, this, 1, game);
+        isVisible = true;
     }
 
     /**
@@ -98,6 +100,12 @@ public class Alien extends Item {
         return shot;
     }
 
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+    
+    
+
     @Override
     public void tick() {
 
@@ -123,7 +131,9 @@ public class Alien extends Item {
      */
     @Override
     public void render(Graphics g) {
+        if (isVisible) {
         g.drawImage(Assets.alien, getX(), getY(), getWidth(), getHeight(), null);
+        }
     }
 
 }

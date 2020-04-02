@@ -165,12 +165,7 @@ public class Game implements Runnable {
         for (Alien alien : listaAliens) {
             alien.tick(); // ticks each alien
 
-            // checks if aliens and shotPlayer collide
-            if (shotPlayer.colision(alien)) {
-                alien.setX(-20);
-                alien.setY(-20);
-            }
-
+            
             // Repositions aliens once they get to the boundaries on the x axis
             if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
                 for (Alien alien2 : listaAliens) {
@@ -182,6 +177,15 @@ public class Game implements Runnable {
                         alien2.setDirection(0);
                     }
                 }
+            }
+            
+            
+            // checks if aliens and shotPlayer collide
+            if (shotPlayer.colision(alien)) {
+                alien.setY(-20);
+                shotPlayer.setIsShot(false); 
+                alien.setIsVisible(false);
+                alien.getShot().setIsVisible(false);
             }
         }
 
