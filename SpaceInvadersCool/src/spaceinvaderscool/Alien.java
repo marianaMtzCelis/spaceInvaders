@@ -135,6 +135,10 @@ public class Alien extends Item {
         } else {
             setX(this.getX() + 1);
         }
+        
+        if (justCrashed) {
+            plasmaAnimation.tick();
+        }
 
         // Animation
 //        if (justCrashed) {
@@ -165,7 +169,7 @@ public class Alien extends Item {
             g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
             if (counterCrashed <= 0) {
                 isVisible = false;
-                this.setY(-20);
+                this.setY(-80);
             }
         }
     }

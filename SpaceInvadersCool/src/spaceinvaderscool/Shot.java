@@ -19,6 +19,7 @@ public class Shot extends Item {
     private Item item;              // to know who does the shot belong to
     private boolean isVisible;
     private int counterCrashed;
+    private Animation plasmaAnimation;
 
     /**
      * Shot class constructor
@@ -42,6 +43,8 @@ public class Shot extends Item {
         isShot = false;
         isVisible = true;
         counterCrashed = 20;
+        
+        this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
     }
 
     /**
@@ -54,6 +57,7 @@ public class Shot extends Item {
         if (type == 0) {
             if (isShot) {
                 setY(y + dy); // Move upwards
+                plasmaAnimation.tick();
             } else {
                 setX(game.getPlayer().getX() + 6);
                 setY(game.getPlayer().getY());
@@ -116,7 +120,8 @@ public class Shot extends Item {
         // Player's shot
         if (type == 0) {
             //g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
-             g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
+                // g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
+                g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
         } 
         
         // Alien's shot
