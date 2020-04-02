@@ -16,12 +16,13 @@ public class Alien extends Item {
     private Game game;
     private int direction;
     private Shot shot;
+    private int rand;
 
     public Alien(int x, int y, int width, int height, Game game, int direction) {
         super(x, y, width, height);
         this.game = game;
         this.direction = direction;
-        shot = new Shot(x,y,3,3,2,1,game);
+        shot = new Shot(x,y,3,3,2,this,1,game);
     }
 
     public int getX() {
@@ -56,10 +57,16 @@ public class Alien extends Item {
         return shot;
     }
     
+    
+    
 
     @Override
     public void tick() {
-        
+        rand = (int)(Math.random() * 6) + 10;
+        shot.tick();
+        if (rand == 11) {
+            shot.setIsShot(true);
+        }
         if (direction == 1) {
             setX(this.getX() - 1);
         } else {

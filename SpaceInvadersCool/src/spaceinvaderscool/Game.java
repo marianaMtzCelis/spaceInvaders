@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  *
@@ -80,7 +81,7 @@ public class Game implements Runnable {
          
          display.getJframe().addKeyListener(keyManager);
          
-         shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, 0, this);
+         shotPlayer = new Shot(player.getX(), player.getY(), 2, 10, -4, player,0, this);
          
          // alien = new Alien(100,100,12,12,this);
          
@@ -149,10 +150,12 @@ public class Game implements Runnable {
      if (keyManager.space) {
          shotPlayer.setIsShot(true);
      }
+     
+     Random generator = new Random();
     
      for (Alien alien : listaAliens) {
          alien.tick();
-         alien.getShot().tick();
+         
          if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
              for (Alien alien2 : listaAliens) {
                  alien2.setY(alien2.getY() + 15);
@@ -163,8 +166,9 @@ public class Game implements Runnable {
                  }
              }
          }
+         
         
-     }
+        }
     
     }
     
