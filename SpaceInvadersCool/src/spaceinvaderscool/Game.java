@@ -193,7 +193,6 @@ public class Game implements Runnable {
             if (player.colision(alien.getShot())) {
                 vidas--;
                 alien.getShot().setIsShot(false);
-                alien.setIsVisible(false);
             }
         }
 
