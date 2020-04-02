@@ -29,6 +29,7 @@ public class Game implements Runnable {
     private KeyManager keyManager;  // to set key manager
     private Shot shotPlayer;        // to set player's shot
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
+    private int vidas;
 
     /**
      * to create title, width and height and set the game is still not running
@@ -43,6 +44,7 @@ public class Game implements Runnable {
         this.height = height;
         running = false;
         keyManager = new KeyManager();
+        vidas = 5;
 
     }
 
@@ -187,6 +189,12 @@ public class Game implements Runnable {
                 alien.setIsVisible(false);
                 alien.getShot().setIsVisible(false);
             }
+            
+            if (player.colision(alien.getShot())) {
+                vidas--;
+                alien.getShot().setIsShot(false);
+                alien.setIsVisible(false);
+            }
         }
 
     }
@@ -209,6 +217,7 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 290, this.width, 290);
             player.render(g);
+            g.drawString("Vidas:" + vidas, 30, 320);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {

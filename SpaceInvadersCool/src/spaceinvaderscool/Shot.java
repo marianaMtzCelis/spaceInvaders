@@ -117,7 +117,7 @@ public class Shot extends Item {
         } 
         
         // Alien's shot
-        if (type == 1 && isVisible) {
+        if (type == 1 && isVisible == true) {
             g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
         }
 
