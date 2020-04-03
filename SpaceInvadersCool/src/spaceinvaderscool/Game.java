@@ -245,7 +245,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * setting the thead for the game
+     * setting the thread for the game
      */
     public synchronized void start() {
         if (!running) {
