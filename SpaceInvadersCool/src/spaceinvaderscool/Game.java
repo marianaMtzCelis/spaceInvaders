@@ -35,7 +35,7 @@ public class Game implements Runnable {
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
     private boolean isPaused;       // to pause or unpause game
     private int vidas;
-    private LinkedList<Integer> highScores; // to store the top five high scores  
+    private int[] highScores;       // to store the top five high scores  
 
     /**
      * to create title, width and height and set the game is still not running
