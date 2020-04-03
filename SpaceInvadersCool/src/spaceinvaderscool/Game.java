@@ -182,10 +182,12 @@ public class Game implements Runnable {
             PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
             // variables to save (vidas, score, hits)
             int vidasToSave = this.vidas;
+            //  int scoreToSave = this.score;
             // number of enemies to save its directions
             int malos = 24;
-////            // saving more attributes
-////            writer.print("" + vidasToSave + "/" + score + "/" + counterVidas + "/" + isPaused + "/" + azarMalos);
+            //  saving more attributes
+//            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
+            //  store player progress
 ////            // variables to store coordinates
 ////            int x, y;
 ////            // save every enemy coordinate
