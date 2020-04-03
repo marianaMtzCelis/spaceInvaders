@@ -234,6 +234,65 @@ public class Game implements Runnable {
         }
     }
 
+        public void Load(String strFileName) {
+        try {
+            // to read from file
+            FileReader file = new FileReader(strFileName);
+//            BufferedReader reader = new BufferedReader(file);
+//            String line;
+//            String datos[];
+//            line = reader.readLine();
+//            datos = line.split("/");
+//            int nDatos = 0; // to keep track of the information read
+//            // Loads each saved variable and sets it to the game's variable
+//            int loadedVidas = Integer.parseInt(datos[nDatos++]);
+//            this.vidas = loadedVidas;
+//            int loadedScore = Integer.parseInt(datos[nDatos++]);
+//            this.score = loadedScore;
+//            int counterVidas = Integer.parseInt(datos[nDatos++]);
+//            this.counterVidas = counterVidas;
+//            int loadedIsPaused = Integer.parseInt(datos[nDatos++]);
+//            this.isPaused = (loadedIsPaused == 1) ? true : false;
+//            int loadedNMalos = Integer.parseInt(datos[nDatos++]);
+//            newListaMalos = new LinkedList<Enemy>();
+//            newListaBuenos = new LinkedList<GoodGuy>();
+//
+//            // Loads to new list of enemies each enemy's x and y position
+//            for (int i = 1; i <= loadedNMalos; i++) {
+//                int loadedX = Integer.parseInt(datos[nDatos++]);
+//                int loadedY = Integer.parseInt(datos[nDatos++]);
+//                Enemy enemy = new Enemy(loadedX, loadedY, 1, 100, 100, this);
+//                newListaMalos.add(enemy);
+//            }
+//
+//            // Copies new list into game's list
+//            this.lista = this.newListaMalos;
+//
+//            int loadedNBuenos = Integer.parseInt(datos[nDatos++]);
+//
+//            // Loads to new list of goodguys each goodguy's x and y position
+//            for (int i = 1; i <= loadedNBuenos; i++) {
+//                int loadedX = Integer.parseInt(datos[nDatos++]);
+//                int loadedY = Integer.parseInt(datos[nDatos++]);
+//                GoodGuy gg = new GoodGuy(loadedX, loadedY, 1, 100, 100, this);
+//                newListaBuenos.add(gg);
+//            }
+//            this.listaBuenos = this.newListaBuenos;
+//
+//            // Loads player's x and y position as well as direction from file
+//            int loadedXPlayer = Integer.parseInt(datos[nDatos++]);
+//            int loadedYPlayer = Integer.parseInt(datos[nDatos++]);
+//            int loadedDirection = Integer.parseInt(datos[nDatos++]);
+//            this.player.setX(loadedXPlayer);
+//            this.player.setY(loadedYPlayer);
+//            this.player.setDirection(loadedDirection);
+//
+//            reader.close();
+        } catch (IOException e) {
+            System.out.println("File Not found CALL 911");
+        }
+    }
+
     /**
      * Ticks the whole game
      */
