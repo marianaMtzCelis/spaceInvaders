@@ -35,6 +35,7 @@ public class Game implements Runnable {
     private KeyManager keyManager;  // to set key manager
     private Shot shotPlayer;        // to set player's shot
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
+    private LinkedList<Alien> newlistaAliens; // to store miltiple Aliens
     private boolean isPaused;       // to pause or unpause game
     private int vidas;
     private int score;
@@ -245,7 +246,7 @@ public class Game implements Runnable {
             line = reader.readLine();
             datos = line.split("/");
             int nDatos = 0; // to keep track of the information read
-//          // Loads each saved variable and sets it to the game's variable
+            // Loads each saved variable and sets it to the game's variable
             int loadedVidas = Integer.parseInt(datos[nDatos++]);
             this.vidas = loadedVidas;
             int loadedScore = Integer.parseInt(datos[nDatos++]);
@@ -261,7 +262,9 @@ public class Game implements Runnable {
             this.shotPlayer.setIsShot(Integer.parseInt(datos[nDatos++]) == 1);
             this.shotPlayer.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
             this.shotPlayer.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
-//            newListaMalos = new LinkedList<Enemy>();
+            // load every alien info
+            //writer.print("/" + alien_x + "/" + alien_y + "/" + alien_iIsVisible + "/" + alien_iJustCrashed + "/" + alien_iCounterCrashed);
+//            newListaAliens = new LinkedList<Alien>();
 //            newListaBuenos = new LinkedList<GoodGuy>();
 //
 //            // Loads to new list of enemies each enemy's x and y position
