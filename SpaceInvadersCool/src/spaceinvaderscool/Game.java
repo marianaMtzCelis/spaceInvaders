@@ -157,16 +157,10 @@ public class Game implements Runnable {
     private void Save(String strFileName) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
-////            // variables to save (lifes, score, hits, paused)
-////            int vidasToSave = this.vidas, score = this.score, counterVidas = this.counterVidas, isPaused;
-////            // assign a value to isPaused depending on situation
-////            if (this.isPaused) {
-////                isPaused = 1;
-////            } else {
-////                isPaused = 0;
-////            }
-////            // number of enemies to save its directions
-////            int azarMalos = this.azarMalos, azarBuenos = this.azarBuenos;
+            // variables to save (vidas, score, hits)
+            int vidasToSave = this.vidas;
+            // number of enemies to save its directions
+            int malos = 24;
 ////            // saving more attributes
 ////            writer.print("" + vidasToSave + "/" + score + "/" + counterVidas + "/" + isPaused + "/" + azarMalos);
 ////            // variables to store coordinates
