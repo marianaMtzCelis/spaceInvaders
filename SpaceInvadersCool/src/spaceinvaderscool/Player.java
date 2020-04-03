@@ -58,6 +58,11 @@ public class Player extends Item {
         return counterCrashed;
     }
 
+    public void setCounterCrashed(int counterCrashed) {
+        this.counterCrashed = counterCrashed;
+    }
+    
+
     /**
      * gets the width of the player
      *

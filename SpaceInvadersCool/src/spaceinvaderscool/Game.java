@@ -245,11 +245,14 @@ public class Game implements Runnable {
             line = reader.readLine();
             datos = line.split("/");
             int nDatos = 0; // to keep track of the information read
-//            // Loads each saved variable and sets it to the game's variable
-//            int loadedVidas = Integer.parseInt(datos[nDatos++]);
-//            this.vidas = loadedVidas;
-//            int loadedScore = Integer.parseInt(datos[nDatos++]);
-//            this.score = loadedScore;
+//          // Loads each saved variable and sets it to the game's variable
+            int loadedVidas = Integer.parseInt(datos[nDatos++]);
+            this.vidas = loadedVidas;
+            int loadedScore = Integer.parseInt(datos[nDatos++]);
+            this.score = loadedScore;
+            // load player status
+            this.player.setJustCrashed(Integer.parseInt(datos[nDatos++]) == 1);
+            this.player.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
 //            int counterVidas = Integer.parseInt(datos[nDatos++]);
 //            this.counterVidas = counterVidas;
 //            int loadedIsPaused = Integer.parseInt(datos[nDatos++]);
