@@ -205,9 +205,10 @@ public class Game implements Runnable {
             writer.print("/" + sp_X + "/" + sp_Y + "/" + i_sp_shot + "/" + i_sp_visible + "/" + sp_counterCrashed);
             //  store all aliens information      
             // variables to store coordinates
-            int alien_x, alien_y;
-            boolean alien_bIsVisible, alien_bJustCrashed;
-            int alien_iIsVisible, alien_iJustCrashed, alien_iCounterCrashed;
+            int alien_x, alien_y, as_x, as_y;
+            boolean alien_bIsVisible, alien_bJustCrashed, as_bIsShot, as_bIsVisible;
+            int alien_iIsVisible, alien_iJustCrashed, alien_iCounterCrashed, as_iIsShot, as_iIsVisible, as_counterCrashed;
+            Shot alienShot;
             for (Alien alien : listaAliens){
                 alien_x = alien.getX();
                 alien_y = alien.getY();
@@ -216,6 +217,15 @@ public class Game implements Runnable {
                 alien_bJustCrashed = alien.isJustCrashed();
                 alien_iJustCrashed = bJustCrashed ? 1 : 0;
                 alien_iCounterCrashed = alien.getCounterCrashed();
+                writer.print("/" + alien_x + "/" + alien_y + "/" + alien_iIsVisible + "/" + alien_iJustCrashed + "/" + alien_iCounterCrashed);
+                alienShot = alien.getShot();
+                as_x = alienShot.getX();
+                as_y = alienShot.getY();
+                as_bIsShot = alienShot.isIsShot();
+                as_iIsShot = as_bIsShot ? 1 : 0;
+                as_bIsVisible = alienShot.isIsVisible();
+                as_iIsVisible = as_bIsVisible ? 1 : 0;
+                as_counterCrashed = alienShot.getCounterCrashed();
             }
             //  alien shot info
 ////            // save every enemy coordinate
