@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,8 +39,13 @@ public class Game implements Runnable {
     private int vidas;
     private int[] highScores;       // to store the top five high scores  
 
-    public void loadHighScores(){
-        
+    public void loadHighScores(String strFileName){
+        //FileReader file = new FileReader(strFileName);
+//        BufferedReader reader = new BufferedReader(file);
+//        String line;
+//        String datos[];
+//        //line = reader.readLine();
+//        datos = line.split("/");
     }
     
     /**
@@ -55,7 +62,7 @@ public class Game implements Runnable {
         running = false;
         keyManager = new KeyManager();
         vidas = 5;
-        loadHighScores();
+        loadHighScores("HighScores.txt");
     }
 
     /**
