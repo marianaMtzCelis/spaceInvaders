@@ -192,7 +192,16 @@ public class Game implements Runnable {
             int iJustCrashed = bJustCrashed == true ? 1 : 0;
             int counterCrashed = this.player.getCounterCrashed();
             int setXPlayer = this.player.getX();
-            int SetYPlayer = this.player.getY();
+            int setYPlayer = this.player.getY();
+            writer.print("" + iJustCrashed + "/" + counterCrashed + "/" + setXPlayer + "/" + setYPlayer + "/");
+            //  store player shot
+            int sp_X = this.shotPlayer.getX();
+            int sp_Y = this.shotPlayer.getY();
+            boolean b_sp_shot = this.shotPlayer.isIsShot();
+            int i_sp_shot = b_sp_shot == true ? 1 : 0;
+            boolean b_sp_visible = this.shotPlayer.isIsVisible();
+            //int i_sp_shot = b_sp_shot == true ? 1 : 0;
+            //  store all aliens information
 ////            // variables to store coordinates
 ////            int x, y;
 ////            // save every enemy coordinate
