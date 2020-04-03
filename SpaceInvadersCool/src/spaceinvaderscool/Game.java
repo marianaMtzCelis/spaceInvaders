@@ -179,15 +179,14 @@ public class Game implements Runnable {
         return keyManager;
     }
     
-    // falta guardar el score
     private void Save(String strFileName) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
             // variables to save (vidas, score, hits)
             int vidasToSave = this.vidas;
-            //  int scoreToSave = this.score;
+            int scoreToSave = this.score;
             //  saving more attributes
-//            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
+            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
             //  store player progress
             boolean bJustCrashed = this.player.isJustCrashed();
             int iJustCrashed = bJustCrashed == true ? 1 : 0;
