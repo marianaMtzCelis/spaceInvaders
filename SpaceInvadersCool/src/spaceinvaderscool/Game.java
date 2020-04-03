@@ -190,7 +190,9 @@ public class Game implements Runnable {
             //  store player progress
             boolean bJustCrashed = this.player.isJustCrashed();
             int iJustCrashed = bJustCrashed == true ? 1 : 0;
-            
+            int counterCrashed = this.player.getCounterCrashed();
+            int setXPlayer = this.player.getX();
+            int SetYPlayer = this.player.getY();
 ////            // variables to store coordinates
 ////            int x, y;
 ////            // save every enemy coordinate
