@@ -48,6 +48,15 @@ public class Player extends Item {
     public int getDirection() {
         return direction;
     }
+    
+    /**
+     * gets the crashed counter of the player
+     *
+     * @return counterCrashed
+     */
+    public int getCounterCrashed() {
+        return counterCrashed;
+    }
 
     /**
      * gets the width of the player
