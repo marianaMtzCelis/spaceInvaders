@@ -154,9 +154,9 @@ public class Game implements Runnable {
         return keyManager;
     }
     
-//    private void Save(String strFileName) {
-//        try {
-////            PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
+    private void Save(String strFileName) {
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
 ////            // variables to save (lifes, score, hits, paused)
 ////            int vidasToSave = this.vidas, score = this.score, counterVidas = this.counterVidas, isPaused;
 ////            // assign a value to isPaused depending on situation
@@ -187,10 +187,10 @@ public class Game implements Runnable {
 ////            // save player's direction and coordinates
 ////            writer.print("/" + player.getX() + "/" + player.getY() + "/" + player.getDirection());
 ////            writer.close();
-////        } catch (IOException ioe) {
-////            System.out.println("File Not found CALL 911");
-////        }
-//    }
+        } catch (IOException ioe) {
+            System.out.println("File Not found CALL 911");
+        }
+    }
 
     /**
      * Ticks the whole game
