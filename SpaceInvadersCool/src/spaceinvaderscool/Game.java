@@ -177,6 +177,7 @@ public class Game implements Runnable {
         return keyManager;
     }
     
+    // falta guardar el score
     private void Save(String strFileName) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
@@ -229,16 +230,7 @@ public class Game implements Runnable {
                 as_counterCrashed = alienShot.getCounterCrashed();
                 writer.print("/" + as_x + "/" + as_y + "/" + as_iIsShot + "/" + as_iIsVisible + "/" + as_counterCrashed);
             }
-////            // save every ally coordinate
-////            writer.print("/" + azarBuenos);
-////            for (GoodGuy gg : listaBuenos) {
-////                x = gg.getX();
-////                y = gg.getY();
-////                writer.print("/" + x + "/" + y);
-////            }
-////            // save player's direction and coordinates
-////            writer.print("/" + player.getX() + "/" + player.getY() + "/" + player.getDirection());
-////            writer.close();
+            writer.close();
         } catch (IOException ioe) {
             System.out.println("File Not found CALL 911");
         }
