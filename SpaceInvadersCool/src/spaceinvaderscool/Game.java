@@ -166,6 +166,13 @@ public class Game implements Runnable {
             //Save("Progress.txt");
         }
         
+        // Checks if the user pressed the load option
+        if (getKeyManager().load) {
+            //isPaused = true;
+            getKeyManager().releaseKey(KeyEvent.VK_C);
+            //Load("Progress.txt");
+        }
+        
         // player shoots when user clicks the space bar
         if (keyManager.space) {
             shotPlayer.setIsShot(true);
