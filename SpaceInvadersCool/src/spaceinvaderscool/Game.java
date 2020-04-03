@@ -71,6 +71,9 @@ public class Game implements Runnable {
         vidas = 5;
         highScores = new int[5];
         loadHighScores("HighScores.txt");
+        // line for debugging highscores later
+//        for (int i = 0; i < 5; i++)
+//            System.out.println(highScores[i]);
     }
 
     /**
