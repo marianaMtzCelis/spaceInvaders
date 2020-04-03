@@ -155,6 +155,7 @@ public class Player extends Item {
             if (counterCrashed <= 0) {
                 justCrashed = false;
                 counterCrashed = 50;
+                this.game.getShotPlayer().setIsVisible(true);
             }
         } else {
         g.drawImage(Assets.player, getX(), getY(), getWidth(), getHeight(), null);
