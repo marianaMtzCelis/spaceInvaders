@@ -160,6 +160,11 @@ public class Alien extends Item {
         }
     }
 
+    public int getCounterCrashed() {
+        return counterCrashed;
+    }
+
+    
     /**
      * Render for Alien class
      *

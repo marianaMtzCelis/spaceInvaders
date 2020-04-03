@@ -198,9 +198,9 @@ public class Game implements Runnable {
             int sp_X = this.shotPlayer.getX();
             int sp_Y = this.shotPlayer.getY();
             boolean b_sp_shot = this.shotPlayer.isIsShot();
-            int i_sp_shot = b_sp_shot == true ? 1 : 0;
+            int i_sp_shot = b_sp_shot ? 1 : 0;
             boolean b_sp_visible = this.shotPlayer.isIsVisible();
-            int i_sp_visible = b_sp_visible == true ? 1 : 0;
+            int i_sp_visible = b_sp_visible ? 1 : 0;
             int sp_counterCrashed = this.shotPlayer.getCounterCrashed();
             writer.print("/" + sp_X + "/" + sp_Y + "/" + i_sp_shot + "/" + i_sp_visible + "/" + sp_counterCrashed);
             //  store all aliens information      
@@ -211,7 +211,11 @@ public class Game implements Runnable {
             for (Alien alien : listaAliens){
                 alien_x = alien.getX();
                 alien_y = alien.getY();
-                //alien_bIsVisible = alien;
+                alien_bIsVisible = alien.isIsVisible();
+                alien_iIsVisible = alien_bIsVisible ? 1 : 0;
+                alien_bJustCrashed = alien.isJustCrashed();
+                alien_iJustCrashed = bJustCrashed ? 1 : 0;
+                alien_iCounterCrashed = alien.getCounterCrashed();
             }
             //  alien shot info
 ////            // save every enemy coordinate
