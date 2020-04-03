@@ -203,9 +203,17 @@ public class Game implements Runnable {
             int i_sp_visible = b_sp_visible == true ? 1 : 0;
             int sp_counterCrashed = this.shotPlayer.getCounterCrashed();
             writer.print("/" + sp_X + "/" + sp_Y + "/" + i_sp_shot + "/" + i_sp_visible + "/" + sp_counterCrashed);
-            //  store all aliens information
-////            // variables to store coordinates
-////            int x, y;
+            //  store all aliens information      
+            // variables to store coordinates
+            int alien_x, alien_y;
+            boolean alien_bIsVisible, alien_bJustCrashed;
+            int alien_iIsVisible, alien_iJustCrashed, alien_iCounterCrashed;
+            for (Alien alien : listaAliens){
+                alien_x = alien.getX();
+                alien_y = alien.getY();
+                //alien_bIsVisible = alien;
+            }
+            //  alien shot info
 ////            // save every enemy coordinate
 ////            for (Enemy enemy : lista) {
 ////                x = enemy.getX();
