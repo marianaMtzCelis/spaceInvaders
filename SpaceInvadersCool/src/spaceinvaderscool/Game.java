@@ -37,6 +37,7 @@ public class Game implements Runnable {
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
     private boolean isPaused;       // to pause or unpause game
     private int vidas;
+    private int score;
     private int[] highScores;       // to store the top five high scores  
 
     public void loadHighScores(String strFileName){
@@ -71,6 +72,7 @@ public class Game implements Runnable {
         vidas = 5;
         highScores = new int[5];
         loadHighScores("HighScores.txt");
+        score = 0;
         // line for debugging highscores later
 //        for (int i = 0; i < 5; i++)
 //            System.out.println(highScores[i]);
@@ -238,12 +240,12 @@ public class Game implements Runnable {
         try {
             // to read from file
             FileReader file = new FileReader(strFileName);
-//            BufferedReader reader = new BufferedReader(file);
-//            String line;
-//            String datos[];
-//            line = reader.readLine();
-//            datos = line.split("/");
-//            int nDatos = 0; // to keep track of the information read
+            BufferedReader reader = new BufferedReader(file);
+            String line;
+            String datos[];
+            line = reader.readLine();
+            datos = line.split("/");
+            int nDatos = 0; // to keep track of the information read
 //            // Loads each saved variable and sets it to the game's variable
 //            int loadedVidas = Integer.parseInt(datos[nDatos++]);
 //            this.vidas = loadedVidas;
