@@ -30,6 +30,7 @@ public class Game implements Runnable {
     private KeyManager keyManager;  // to set key manager
     private Shot shotPlayer;        // to set player's shot
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
+    private boolean isPaused;       // to pause or unpause game
     private int vidas;
 
     /**
