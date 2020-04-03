@@ -29,6 +29,15 @@ public class Shot extends Item {
     public boolean isIsVisible() {
         return isVisible;
     }
+    
+     /**
+     * counterCrashed getter
+     *
+     * @return counterCrashed
+     */
+    public int getCounterCrashed() {
+        return counterCrashed;
+    }
 
     /**
      * Shot class constructor

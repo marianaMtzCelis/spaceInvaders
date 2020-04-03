@@ -200,7 +200,8 @@ public class Game implements Runnable {
             boolean b_sp_shot = this.shotPlayer.isIsShot();
             int i_sp_shot = b_sp_shot == true ? 1 : 0;
             boolean b_sp_visible = this.shotPlayer.isIsVisible();
-            //int i_sp_shot = b_sp_shot == true ? 1 : 0;
+            int i_sp_visible = b_sp_visible == true ? 1 : 0;
+            //int sp_counterCrashed = this.shotPlayer.getCounterCrashed();
             //  store all aliens information
 ////            // variables to store coordinates
 ////            int x, y;
