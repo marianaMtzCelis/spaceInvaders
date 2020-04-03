@@ -35,7 +35,7 @@ public class Game implements Runnable {
     private KeyManager keyManager;  // to set key manager
     private Shot shotPlayer;        // to set player's shot
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
-    private LinkedList<Alien> newlistaAliens; // to store miltiple Aliens
+    private LinkedList<Alien> nuevosAliens; // to store miltiple Aliens
     private boolean isPaused;       // to pause or unpause game
     private int vidas;
     private int score;
@@ -264,16 +264,17 @@ public class Game implements Runnable {
             this.shotPlayer.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
             // load every alien info
             //writer.print("/" + alien_x + "/" + alien_y + "/" + alien_iIsVisible + "/" + alien_iJustCrashed + "/" + alien_iCounterCrashed);
-//            newListaAliens = new LinkedList<Alien>();
-//            newListaBuenos = new LinkedList<GoodGuy>();
-//
-//            // Loads to new list of enemies each enemy's x and y position
-//            for (int i = 1; i <= loadedNMalos; i++) {
-//                int loadedX = Integer.parseInt(datos[nDatos++]);
-//                int loadedY = Integer.parseInt(datos[nDatos++]);
-//                Enemy enemy = new Enemy(loadedX, loadedY, 1, 100, 100, this);
-//                newListaMalos.add(enemy);
-//            }
+            nuevosAliens = new LinkedList<Alien>();
+            // Loads to new list of enemies each enemy's x and y position
+            for (int i = 1; i <= 24; i++) {
+                int loadedX = Integer.parseInt(datos[nDatos++]);
+                int loadedY = Integer.parseInt(datos[nDatos++]);
+                Alien alienToSet = new Alien(loadedX, loadedY, 12, 12, this, 1);
+                alienToSet.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
+                alienToSet.setJustCrashed(Integer.parseInt(datos[nDatos++]) == 1);
+                alienToSet.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
+                nuevosAliens.add(alienToSet);
+            }
 //
 //            // Copies new list into game's list
 //            this.lista = this.newListaMalos;

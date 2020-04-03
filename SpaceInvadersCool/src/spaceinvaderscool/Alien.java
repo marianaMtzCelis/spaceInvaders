@@ -48,6 +48,10 @@ public class Alien extends Item {
         return x;
     }
 
+    public void setCounterCrashed(int counterCrashed) {
+        this.counterCrashed = counterCrashed;
+    }
+    
     /**
      * x setter
      *
