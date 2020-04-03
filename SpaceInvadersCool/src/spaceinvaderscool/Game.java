@@ -7,6 +7,7 @@ package spaceinvaderscool;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.util.LinkedList;
 import java.util.Random;
@@ -159,6 +160,12 @@ public class Game implements Runnable {
         player.tick();
         shotPlayer.tick();
 
+        // Checks if the user pressed the save option
+        if (getKeyManager().save) {
+            getKeyManager().releaseKey(KeyEvent.VK_G);
+            //Save("Progress.txt");
+        }
+        
         // player shoots when user clicks the space bar
         if (keyManager.space) {
             shotPlayer.setIsShot(true);
