@@ -247,7 +247,7 @@ public class Game implements Runnable {
         // Checks if the user pressed the save option
         if (getKeyManager().save) {
             getKeyManager().releaseKey(KeyEvent.VK_G);
-            //Save("Progress.txt");
+            Save("Progress.txt");
         }
         
         // Checks if the user pressed the load option
