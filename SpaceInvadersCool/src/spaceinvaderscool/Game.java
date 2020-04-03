@@ -184,8 +184,6 @@ public class Game implements Runnable {
             // variables to save (vidas, score, hits)
             int vidasToSave = this.vidas;
             //  int scoreToSave = this.score;
-            // number of enemies to save its directions
-            int malos = 24;
             //  saving more attributes
 //            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
             //  store player progress
