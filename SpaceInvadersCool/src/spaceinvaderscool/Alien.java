@@ -121,6 +121,8 @@ public class Alien extends Item {
 
     @Override
     public void tick() {
+        
+        if (isVisible) {
 
         // Random number from 1 to 100 to throw bombs
         rand = (int) (Math.random() * 100 + 1);
@@ -151,6 +153,7 @@ public class Alien extends Item {
 //                    isVisible = false;    
 //                }
 //            }
+        }
     }
 
     /**

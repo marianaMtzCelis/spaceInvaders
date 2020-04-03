@@ -43,7 +43,7 @@ public class Shot extends Item {
         isShot = false;
         isVisible = true;
         counterCrashed = 20;
-        
+
         this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
     }
 
@@ -67,21 +67,25 @@ public class Shot extends Item {
             if (y <= 0) {
                 isShot = false;
             }
-            
+
         }
 
         // Alien type of shot
         if (type == 1) {
-            if (isShot) {
-                setY(y + dy); // Move downwards
-            } else {
-                setX(item.getX() + 4);
-                setY(item.getY() + 5);
-            }
+            if (isVisible) {
+                if (isShot) {
+                    setY(y + dy); // Move downwards
+                } else {
+                    setX(item.getX() + 4);
+                    setY(item.getY() + 5);
+                }
 
-            // Checks lower boundary on y axis
-            if (y >= 290) {
-                isShot = false;
+                // Checks lower boundary on y axis
+                if (y >= 290) {
+                    isShot = false;
+                }
+            } else {
+                setY(-80);
             }
         }
     }
@@ -107,7 +111,6 @@ public class Shot extends Item {
     public void setIsVisible(boolean isVisible) {
         this.isVisible = isVisible;
     }
-     
 
     /**
      * Renders Shot's image
@@ -120,10 +123,10 @@ public class Shot extends Item {
         // Player's shot
         if (type == 0) {
             //g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
-                // g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
-                g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
-        } 
-        
+            // g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
+            g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
+        }
+
         // Alien's shot
         if (type == 1 && isVisible == true) {
             g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
