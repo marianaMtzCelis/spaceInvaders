@@ -22,6 +22,10 @@ public class Alien extends Item {
     private boolean justCrashed;
     private int counterCrashed;
 
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+    
     // Constructor for Alien
     public Alien(int x, int y, int width, int height, Game game, int direction) {
         super(x, y, width, height);
