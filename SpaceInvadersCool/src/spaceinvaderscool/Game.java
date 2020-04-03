@@ -277,6 +277,11 @@ public class Game implements Runnable {
                 // load alien shot info
                 loadedX = Integer.parseInt(datos[nDatos++]);
                 loadedY = Integer.parseInt(datos[nDatos++]);
+                Shot shotToSet = new Shot(loadedX, loadedY, 3, 5, 2, alienToSet, 1, this);
+                shotToSet.setIsShot(Integer.parseInt(datos[nDatos++]) == 1);
+                shotToSet.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
+                shotToSet.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
+                alienToSet.setShot(shotToSet);
                 nuevosAliens.add(alienToSet);
             }
             // Copies new list into game's list
