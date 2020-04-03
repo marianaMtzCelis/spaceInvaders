@@ -218,6 +218,7 @@ public class Game implements Runnable {
                 alien_iJustCrashed = bJustCrashed ? 1 : 0;
                 alien_iCounterCrashed = alien.getCounterCrashed();
                 writer.print("/" + alien_x + "/" + alien_y + "/" + alien_iIsVisible + "/" + alien_iJustCrashed + "/" + alien_iCounterCrashed);
+                //  alien shot info
                 alienShot = alien.getShot();
                 as_x = alienShot.getX();
                 as_y = alienShot.getY();
@@ -226,14 +227,8 @@ public class Game implements Runnable {
                 as_bIsVisible = alienShot.isIsVisible();
                 as_iIsVisible = as_bIsVisible ? 1 : 0;
                 as_counterCrashed = alienShot.getCounterCrashed();
+                writer.print("/" + as_x + "/" + as_y + "/" + as_iIsShot + "/" + as_iIsVisible + "/" + as_counterCrashed);
             }
-            //  alien shot info
-////            // save every enemy coordinate
-////            for (Enemy enemy : lista) {
-////                x = enemy.getX();
-////                y = enemy.getY();
-////                writer.print("/" + x + "/" + y);
-////            }
 ////            // save every ally coordinate
 ////            writer.print("/" + azarBuenos);
 ////            for (GoodGuy gg : listaBuenos) {
