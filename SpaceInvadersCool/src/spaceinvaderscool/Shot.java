@@ -81,7 +81,7 @@ public class Shot extends Item {
                 setY(y + dy); // Move upwards
                 plasmaAnimation.tick();
             } else {
-                setX(game.getPlayer().getX() + 6);
+                setX(game.getPlayer().getX() + 15);
                 setY(game.getPlayer().getY());
             }
 
@@ -103,7 +103,7 @@ public class Shot extends Item {
                 }
 
                 // Checks lower boundary on y axis
-                if (y >= 290) {
+                if (y >= 480) {
                     isShot = false;
                 }
             } else {
@@ -143,7 +143,7 @@ public class Shot extends Item {
     public void render(Graphics g) {
 
         // Player's shot
-        if (type == 0) {
+        if (type == 0 && isVisible == true) {
             //g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
             // g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
             g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);

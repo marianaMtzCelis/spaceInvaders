@@ -106,6 +106,12 @@ public class Game implements Runnable {
         return player;
     }
 
+    public Shot getShotPlayer() {
+        return shotPlayer;
+    }
+    
+    
+
     /**
      * initializing the display window of the game
      */
@@ -113,11 +119,11 @@ public class Game implements Runnable {
         display = new Display(title, getWidth(), getHeight());
         Assets.init();
 
-        player = new Player(270, 280, 1, 15, 10, this);
+        player = new Player(this.width/2, 450, 1, 40, 30, this);
 
         display.getJframe().addKeyListener(keyManager);
 
-        shotPlayer = new Shot(player.getX(), player.getY(), 8, 8, -4, player, 0, this);
+        shotPlayer = new Shot(player.getX(), player.getY(), 20, 20, -4, player, 0, this);
 
         listaAliens = new LinkedList<Alien>();
 
@@ -127,12 +133,12 @@ public class Game implements Runnable {
             int xo = 150; //  initial x  value
             for (int j = 1; j <= 6; j++) {
                 // create each alien
-                Alien alien = new Alien(xo, yo, 12, 12, this, 1);
+                Alien alien = new Alien(xo, yo, 30, 30, this, 1);
                 // add each alien to the linked list
                 listaAliens.add(alien);
-                xo += 20; // update x position
+                xo += 50; // update x position
             }
-            yo += 15; // update y position
+            yo += 30; // update y position
         }
 
     }
@@ -319,6 +325,7 @@ public class Game implements Runnable {
         if (keyManager.space) {
             shotPlayer.setIsShot(true);
         }
+        
 
         for (Alien alien : listaAliens) {
             alien.tick(); // ticks each alien
@@ -350,6 +357,7 @@ public class Game implements Runnable {
                 vidas--;
                 alien.getShot().setIsShot(false);
                 player.setJustCrashed(true);
+                shotPlayer.setIsVisible(false);
             }
         }
 
@@ -371,9 +379,9 @@ public class Game implements Runnable {
             g.drawImage(Assets.background, 0, 0, width, height, null);
             shotPlayer.render(g);
             g.setColor(Color.green);
-            g.drawLine(0, 290, this.width, 290);
+            g.drawLine(0, 480, this.width, 480);
             player.render(g);
-            g.drawString("Vidas:" + vidas, 30, 320);
+            g.drawString("Vidas:" + vidas, 30, 520);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
