@@ -263,41 +263,24 @@ public class Game implements Runnable {
             this.shotPlayer.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
             this.shotPlayer.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
             // load every alien info
-            //writer.print("/" + alien_x + "/" + alien_y + "/" + alien_iIsVisible + "/" + alien_iJustCrashed + "/" + alien_iCounterCrashed);
             nuevosAliens = new LinkedList<Alien>();
             // Loads to new list of enemies each enemy's x and y position
             for (int i = 1; i <= 24; i++) {
+                // load alien info
                 int loadedX = Integer.parseInt(datos[nDatos++]);
                 int loadedY = Integer.parseInt(datos[nDatos++]);
                 Alien alienToSet = new Alien(loadedX, loadedY, 12, 12, this, 1);
                 alienToSet.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
                 alienToSet.setJustCrashed(Integer.parseInt(datos[nDatos++]) == 1);
                 alienToSet.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
+                //writer.print("/" + as_x + "/" + as_y + "/" + as_iIsShot + "/" + as_iIsVisible + "/" + as_counterCrashed);
+                // load alien shot info
+                loadedX = Integer.parseInt(datos[nDatos++]);
+                loadedY = Integer.parseInt(datos[nDatos++]);
                 nuevosAliens.add(alienToSet);
             }
-//
-//            // Copies new list into game's list
-//            this.lista = this.newListaMalos;
-//
-//            int loadedNBuenos = Integer.parseInt(datos[nDatos++]);
-//
-//            // Loads to new list of goodguys each goodguy's x and y position
-//            for (int i = 1; i <= loadedNBuenos; i++) {
-//                int loadedX = Integer.parseInt(datos[nDatos++]);
-//                int loadedY = Integer.parseInt(datos[nDatos++]);
-//                GoodGuy gg = new GoodGuy(loadedX, loadedY, 1, 100, 100, this);
-//                newListaBuenos.add(gg);
-//            }
-//            this.listaBuenos = this.newListaBuenos;
-//
-//            // Loads player's x and y position as well as direction from file
-//            int loadedXPlayer = Integer.parseInt(datos[nDatos++]);
-//            int loadedYPlayer = Integer.parseInt(datos[nDatos++]);
-//            int loadedDirection = Integer.parseInt(datos[nDatos++]);
-//            this.player.setX(loadedXPlayer);
-//            this.player.setY(loadedYPlayer);
-//            this.player.setDirection(loadedDirection);
-//
+            // Copies new list into game's list
+            this.listaAliens = this.nuevosAliens;
             reader.close();
         } catch (IOException e) {
             System.out.println("File Not found CALL 911");

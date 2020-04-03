@@ -115,6 +115,10 @@ public class Alien extends Item {
         return shot;
     }
 
+    public void setShot(Shot shot) {
+        this.shot = shot;
+    }
+
     public void setIsVisible(boolean isVisible) {
         this.isVisible = isVisible;
     }
