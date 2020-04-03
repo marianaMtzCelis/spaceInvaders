@@ -40,12 +40,16 @@ public class Game implements Runnable {
     private int[] highScores;       // to store the top five high scores  
 
     public void loadHighScores(String strFileName){
-        //FileReader file = new FileReader(strFileName);
-//        BufferedReader reader = new BufferedReader(file);
-//        String line;
-//        String datos[];
-//        //line = reader.readLine();
-//        datos = line.split("/");
+        try {
+            FileReader file = new FileReader(strFileName);
+            BufferedReader reader = new BufferedReader(file);
+            String line;
+    //        String datos[];
+    //        //line = reader.readLine();
+    //        datos = line.split("/");
+        } catch (IOException e) {
+            System.out.println("File Not found CALL 911");
+        }
     }
     
     /**
