@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -150,6 +153,44 @@ public class Game implements Runnable {
     public KeyManager getKeyManager() {
         return keyManager;
     }
+    
+//    private void Save(String strFileName) {
+//        try {
+////            PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
+////            // variables to save (lifes, score, hits, paused)
+////            int vidasToSave = this.vidas, score = this.score, counterVidas = this.counterVidas, isPaused;
+////            // assign a value to isPaused depending on situation
+////            if (this.isPaused) {
+////                isPaused = 1;
+////            } else {
+////                isPaused = 0;
+////            }
+////            // number of enemies to save its directions
+////            int azarMalos = this.azarMalos, azarBuenos = this.azarBuenos;
+////            // saving more attributes
+////            writer.print("" + vidasToSave + "/" + score + "/" + counterVidas + "/" + isPaused + "/" + azarMalos);
+////            // variables to store coordinates
+////            int x, y;
+////            // save every enemy coordinate
+////            for (Enemy enemy : lista) {
+////                x = enemy.getX();
+////                y = enemy.getY();
+////                writer.print("/" + x + "/" + y);
+////            }
+////            // save every ally coordinate
+////            writer.print("/" + azarBuenos);
+////            for (GoodGuy gg : listaBuenos) {
+////                x = gg.getX();
+////                y = gg.getY();
+////                writer.print("/" + x + "/" + y);
+////            }
+////            // save player's direction and coordinates
+////            writer.print("/" + player.getX() + "/" + player.getY() + "/" + player.getDirection());
+////            writer.close();
+////        } catch (IOException ioe) {
+////            System.out.println("File Not found CALL 911");
+////        }
+//    }
 
     /**
      * Ticks the whole game
