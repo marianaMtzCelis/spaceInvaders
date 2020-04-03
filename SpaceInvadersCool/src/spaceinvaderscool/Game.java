@@ -91,7 +91,7 @@ public class Game implements Runnable {
 
         display.getJframe().addKeyListener(keyManager);
 
-        shotPlayer = new Shot(player.getX(), player.getY(), 5, 5, -4, player, 0, this);
+        shotPlayer = new Shot(player.getX(), player.getY(), 8, 8, -4, player, 0, this);
 
         listaAliens = new LinkedList<Alien>();
 
@@ -271,8 +271,8 @@ public class Game implements Runnable {
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
-                alien.render(g);
                 alien.getShot().render(g);
+                alien.render(g);
             }
 
 //            // displays vidas and score

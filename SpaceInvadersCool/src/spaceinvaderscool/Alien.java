@@ -27,7 +27,7 @@ public class Alien extends Item {
         super(x, y, width, height);
         this.game = game;
         this.direction = direction;
-        shot = new Shot(x, y, 3, 3, 2, this, 1, game);
+        shot = new Shot(x, y, 3, 5, 2, this, 1, game);
         isVisible = true;
         justCrashed = false;
         counterCrashed = 50;
