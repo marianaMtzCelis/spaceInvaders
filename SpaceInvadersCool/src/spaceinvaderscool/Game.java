@@ -189,9 +189,11 @@ public class Game implements Runnable {
                 alien.getShot().setIsVisible(false);
             }
             
+            // checks player's colusion with alien bombs
             if (player.colision(alien.getShot())) {
                 vidas--;
                 alien.getShot().setIsShot(false);
+                player.setJustCrashed(true);
             }
         }
 

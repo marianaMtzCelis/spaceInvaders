@@ -32,7 +32,7 @@ public class Alien extends Item {
         justCrashed = false;
         counterCrashed = 50;
 
-        this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
+        this.plasmaAnimation = new Animation(Assets.plasmaShock, 50);
     }
 
     /**

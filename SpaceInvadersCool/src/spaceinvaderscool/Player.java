@@ -15,6 +15,9 @@ public class Player extends Item {
 
     private int direction;  // to store player's direction
     private Game game;      // to access game's attributes
+    private Animation explosion;
+    private boolean justCrashed;
+    private int counterCrashed;
 
     /**
      * Player class constructor
@@ -31,6 +34,10 @@ public class Player extends Item {
         this.direction = direction;
         this.game = game;
         this.dx = 2;
+        justCrashed = false;
+        counterCrashed = 25;
+        
+        this.explosion = new Animation(Assets.explosion, 20);
     }
 
     /**
@@ -87,6 +94,15 @@ public class Player extends Item {
         this.height = height;
     }
 
+    public boolean isJustCrashed() {
+        return justCrashed;
+    }
+
+    public void setJustCrashed(boolean justCrashed) {
+        this.justCrashed = justCrashed;
+    }
+    
+
     /**
      * Ticks the player
      */
@@ -106,6 +122,10 @@ public class Player extends Item {
         } else if (getX() <= 5) {
             setX(5);
         }
+        
+        if (justCrashed) {
+            explosion.tick();
+        }
     }
 
     /**
@@ -115,6 +135,15 @@ public class Player extends Item {
      */
     @Override
     public void render(Graphics g) {
+         if (justCrashed) {
+            counterCrashed--;
+            g.drawImage(explosion.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
+            if (counterCrashed <= 0) {
+                justCrashed = false;
+                counterCrashed = 50;
+            }
+        } else {
         g.drawImage(Assets.player, getX(), getY(), getWidth(), getHeight(), null);
+         }
     }
 }

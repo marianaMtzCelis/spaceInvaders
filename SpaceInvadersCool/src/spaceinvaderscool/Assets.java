@@ -23,6 +23,9 @@ public class Assets {
     public static BufferedImage plasma;
     public static BufferedImage plasmaShock[];
     public static BufferedImage plasmaShock2[];
+    public static BufferedImage spritesExplosion;
+    public static BufferedImage explosion[];
+    
 
     /**
      * Initializing the images of the game
@@ -42,10 +45,13 @@ public class Assets {
         plasma = spriteSheetP.crop(930, 78, 165, 180);
         spritesPlasma2 = ImageLoader.loadImage("/images/plasma2.png");
         SpriteSheet spriteSheetP2 = new SpriteSheet(spritesPlasma2);
+        spritesExplosion = ImageLoader.loadImage("/images/boomboom.png");
+        SpriteSheet spriteSheetE = new SpriteSheet(spritesExplosion);
         
         // Create arrays of images
         plasmaShock = new BufferedImage[3];
         plasmaShock2 = new BufferedImage[4];
+        explosion = new BufferedImage[4];
         
         for (int i = 0; i < 3; i++) {
             plasmaShock[i] = spriteSheetP.crop(i*263+33, 37, 263, 274);
@@ -53,6 +59,10 @@ public class Assets {
         
         for (int i = 0; i < 4; i++) {
             plasmaShock2[i] = spriteSheetP.crop(i*225+13, 45, 225, 167);
+        }
+        
+         for (int i = 0; i < 4; i++) {
+            explosion[i] = spriteSheetE.crop(i*220+22, 52, 220, 193);
         }
 
     }
