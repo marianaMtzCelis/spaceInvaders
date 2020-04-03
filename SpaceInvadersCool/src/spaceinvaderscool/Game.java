@@ -44,9 +44,12 @@ public class Game implements Runnable {
             FileReader file = new FileReader(strFileName);
             BufferedReader reader = new BufferedReader(file);
             String line;
-    //        String datos[];
-    //        //line = reader.readLine();
-    //        datos = line.split("/");
+            String datos[];
+            line = reader.readLine();
+            datos = line.split("/");
+            for (int i = 0; i < 5; ++i){
+                highScores[i] = Integer.parseInt(datos[i]);
+            }
         } catch (IOException e) {
             System.out.println("File Not found CALL 911");
         }
@@ -66,6 +69,7 @@ public class Game implements Runnable {
         running = false;
         keyManager = new KeyManager();
         vidas = 5;
+        highScores = new int[5];
         loadHighScores("HighScores.txt");
     }
 
