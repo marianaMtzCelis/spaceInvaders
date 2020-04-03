@@ -256,7 +256,6 @@ public class Game implements Runnable {
             this.player.setX(Integer.parseInt(datos[nDatos++]));
             this.player.setY(Integer.parseInt(datos[nDatos++]));
             // load player shot status
-            // writer.print("/" + sp_X + "/" + sp_Y + "/" + i_sp_shot + "/" + i_sp_visible + "/" + sp_counterCrashed);
             this.shotPlayer.setX(Integer.parseInt(datos[nDatos++]));
             this.shotPlayer.setY(Integer.parseInt(datos[nDatos++]));
             this.shotPlayer.setIsShot(Integer.parseInt(datos[nDatos++]) == 1);
