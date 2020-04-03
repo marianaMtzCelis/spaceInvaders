@@ -188,6 +188,9 @@ public class Game implements Runnable {
             //  saving more attributes
 //            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
             //  store player progress
+            boolean bJustCrashed = this.player.isJustCrashed();
+            int iJustCrashed = bJustCrashed == true ? 1 : 0;
+            
 ////            // variables to store coordinates
 ////            int x, y;
 ////            // save every enemy coordinate
