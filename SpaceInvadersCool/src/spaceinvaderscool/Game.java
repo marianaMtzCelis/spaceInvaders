@@ -297,7 +297,7 @@ public class Game implements Runnable {
 //            this.player.setY(loadedYPlayer);
 //            this.player.setDirection(loadedDirection);
 //
-//            reader.close();
+            reader.close();
         } catch (IOException e) {
             System.out.println("File Not found CALL 911");
         }
@@ -323,7 +323,7 @@ public class Game implements Runnable {
         if (getKeyManager().load) {
             //isPaused = true;
             getKeyManager().releaseKey(KeyEvent.VK_C);
-            //Load("Progress.txt");
+            Load("Progress.txt");
         }
         
         // player shoots when user clicks the space bar
