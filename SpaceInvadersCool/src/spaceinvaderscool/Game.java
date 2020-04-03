@@ -37,6 +37,10 @@ public class Game implements Runnable {
     private int vidas;
     private int[] highScores;       // to store the top five high scores  
 
+    public void loadHighScores(){
+        
+    }
+    
     /**
      * to create title, width and height and set the game is still not running
      *
@@ -51,6 +55,7 @@ public class Game implements Runnable {
         running = false;
         keyManager = new KeyManager();
         vidas = 5;
+        loadHighScores();
     }
 
     /**
