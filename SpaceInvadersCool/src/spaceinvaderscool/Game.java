@@ -253,11 +253,15 @@ public class Game implements Runnable {
             // load player status
             this.player.setJustCrashed(Integer.parseInt(datos[nDatos++]) == 1);
             this.player.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
-//            int counterVidas = Integer.parseInt(datos[nDatos++]);
-//            this.counterVidas = counterVidas;
-//            int loadedIsPaused = Integer.parseInt(datos[nDatos++]);
-//            this.isPaused = (loadedIsPaused == 1) ? true : false;
-//            int loadedNMalos = Integer.parseInt(datos[nDatos++]);
+            this.player.setX(Integer.parseInt(datos[nDatos++]));
+            this.player.setY(Integer.parseInt(datos[nDatos++]));
+            // load player shot status
+            // writer.print("/" + sp_X + "/" + sp_Y + "/" + i_sp_shot + "/" + i_sp_visible + "/" + sp_counterCrashed);
+            this.shotPlayer.setX(Integer.parseInt(datos[nDatos++]));
+            this.shotPlayer.setY(Integer.parseInt(datos[nDatos++]));
+            this.shotPlayer.setIsShot(Integer.parseInt(datos[nDatos++]) == 1);
+            this.shotPlayer.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
+            this.shotPlayer.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
 //            newListaMalos = new LinkedList<Enemy>();
 //            newListaBuenos = new LinkedList<GoodGuy>();
 //

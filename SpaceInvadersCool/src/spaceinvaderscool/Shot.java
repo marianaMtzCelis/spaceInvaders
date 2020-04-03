@@ -39,6 +39,10 @@ public class Shot extends Item {
         return counterCrashed;
     }
 
+    public void setCounterCrashed(int counterCrashed) {
+        this.counterCrashed = counterCrashed;
+    }
+    
     /**
      * Shot class constructor
      *
