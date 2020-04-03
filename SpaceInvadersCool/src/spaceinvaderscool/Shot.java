@@ -22,6 +22,15 @@ public class Shot extends Item {
     private Animation plasmaAnimation;
 
     /**
+     * isVisible getter
+     *
+     * @return isVisible
+     */
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    /**
      * Shot class constructor
      *
      * @param x
