@@ -137,7 +137,7 @@ public class Alien extends Item {
         if (isVisible) {
 
         // Random number from 1 to 100 to throw bombs
-        rand = (int) (Math.random() * 100 + 1);
+        rand = (int) (Math.random()*250)+1;
         shot.tick();
         if (rand == 11) {
             shot.setIsShot(true);
