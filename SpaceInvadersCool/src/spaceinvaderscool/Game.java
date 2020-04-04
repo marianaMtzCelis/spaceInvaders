@@ -323,7 +323,7 @@ public class Game implements Runnable {
     private void updateHighScore(){
         int[] allHighScores = new int[6];
         for (int i = 0; i < 5; ++i){
-            allHighScores[0] = highScores[0];
+            allHighScores[i] = highScores[i];
         }
         allHighScores[5] = score;
         Arrays.sort(allHighScores);
