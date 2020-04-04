@@ -44,6 +44,8 @@ public class Game implements Runnable {
     private int score;              // to store game score
     private int[] highScores;       // to store the top five high scores  
     private boolean gameOver;       // to store if game is over or not
+    private int enemies;            // to store alive enemies
+    private boolean winner;
 
     /**
      * Loads High Scores from file
@@ -84,6 +86,8 @@ public class Game implements Runnable {
         loadHighScores("HighScores.txt");
         score = 0;
         gameOver = false;
+        enemies = 24;
+        winner = false;
         // line for debugging highscores later
 //        for (int i = 0; i < 5; i++)
 //            System.out.println(highScores[i]);
@@ -341,7 +345,7 @@ public class Game implements Runnable {
      */
     private void tick() {
 
-        if (!gameOver) {
+        if (!gameOver && !winner) {
 
             // Ticks each object
             keyManager.tick();
@@ -390,6 +394,11 @@ public class Game implements Runnable {
                     Assets.attack.play();
                     score += 100;
                     if (score % 1200 == 0 && vidas < 10) ++vidas; 
+                    enemies--;
+                    if (enemies <= 0) {
+                        winner = true;
+                        Assets.end.play();
+                    }
                 }
 
                 // checks player's colusion with alien bombs
@@ -402,7 +411,7 @@ public class Game implements Runnable {
                     if (vidas <= 0) {
                         updateHighScore();
                         gameOver = true;
-                        Assets.end.play();
+                        Assets.apollo.play();
                     }
                 }
 
@@ -488,14 +497,27 @@ public class Game implements Runnable {
             if (gameOver) {
                 g.drawImage(Assets.gameOver, 0, 0, width, height, null);
                 g.setColor(Color.cyan);
-                g.drawRect(width/2-200, height/2, 400, 150);
-                g.drawString("High Scores", width/2-180, height/2 + 30);
-                g.drawString("1) " + highScores[0], width/2-180, height/2 + 50);
-                g.drawString("2) " + highScores[1], width/2-180, height/2 + 65);
-                g.drawString("3) " + highScores[2], width/2-180, height/2 + 80);
-                g.drawString("4) " + highScores[3], width/2-180, height/2 + 95);
-                g.drawString("5) " + highScores[4], width/2-180, height/2 + 110);
+                g.drawRect(width/2-90, height/2, 200, 130);
+                g.drawString("High Scores", width/2-25, height/2 + 30);
+                g.drawString("1) " + highScores[0], width/2-10, height/2 + 50);
+                g.drawString("2) " + highScores[1], width/2-10, height/2 + 65);
+                g.drawString("3) " + highScores[2], width/2-10, height/2 + 80);
+                g.drawString("4) " + highScores[3], width/2-10, height/2 + 95);
+                g.drawString("5) " + highScores[4], width/2-10, height/2 + 110);
                 
+            }
+            
+            // renders mission accomplished message and high scores
+            if (winner) {
+                g.drawImage(Assets.missionA, 0, 0, width, height, null);
+                g.setColor(Color.magenta);
+                g.drawRect(width/2-110, height/2, 200, 130);
+                g.drawString("High Scores", width/2-50, height/2 + 30);
+                g.drawString("1) " + highScores[0], width/2-32, height/2 + 50);
+                g.drawString("2) " + highScores[1], width/2-32, height/2 + 65);
+                g.drawString("3) " + highScores[2], width/2-32, height/2 + 80);
+                g.drawString("4) " + highScores[3], width/2-32, height/2 + 95);
+                g.drawString("5) " + highScores[4], width/2-32, height/2 + 110);
             }
 
             bs.show();

@@ -29,9 +29,12 @@ public class Assets {
     public static BufferedImage trash2;         // to store banana image
     public static BufferedImage trash3;         // to store wrapper image
     public static BufferedImage gameOver;       // to store gameOver image
+    public static BufferedImage missionA;       // to store mission Accomplished image
     public static SoundClip attack;             // to store attack sound clip
     public static SoundClip attacked;           // to store attacked sound clip 
     public static SoundClip end;                // to store end sound clip
+    public static SoundClip apollo;           // to store sound if player loses
+  
 
     /**
      * Initializing the images of the game
@@ -48,11 +51,13 @@ public class Assets {
         trash2 = ImageLoader.loadImage("/images/trash2.png");
         trash3 = ImageLoader.loadImage("/images/trash3.png");
         gameOver = ImageLoader.loadImage("/images/gameOver.jpg");
+        missionA = ImageLoader.loadImage("/images/missionAccomplished.png");
 
         // Getting sounds from file
         attack = new SoundClip("/sounds/attack.wav");
         attacked = new SoundClip("/sounds/attacked.wav");
         end = new SoundClip("/sounds/end.wav");
+        apollo = new SoundClip("/sounds/apollo.wav");
 
         // Get images from a spriteSheet
         spritesPlasma = ImageLoader.loadImage("/images/plasma.png");
