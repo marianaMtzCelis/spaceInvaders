@@ -350,6 +350,7 @@ public class Game implements Runnable {
                 shotPlayer.setIsShot(false); 
                 alien.setJustCrashed(true);
                 alien.getShot().setIsVisible(false);
+                Assets.attack.play();
             }
             
             // checks player's colusion with alien bombs
@@ -358,6 +359,7 @@ public class Game implements Runnable {
                 alien.getShot().setIsShot(false);
                 player.setJustCrashed(true);
                 shotPlayer.setIsVisible(false);
+                Assets.attacked.play();
             }
         }
 
