@@ -384,6 +384,11 @@ public class Game implements Runnable {
                         }
                     }
                 }
+                
+                if (shotPlayer.isMissedShot() && score > 0) {
+                    score -= 10;
+                    shotPlayer.setMissedShot(false);
+                }
 
                 // checks if aliens and shotPlayer collide
                 if (shotPlayer.colision(alien)) {

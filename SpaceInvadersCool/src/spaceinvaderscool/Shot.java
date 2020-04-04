@@ -53,6 +53,10 @@ public class Shot extends Item {
     public boolean isMissedShot() {
         return missedShot;
     }
+
+    public void setMissedShot(boolean missedShot) {
+        this.missedShot = missedShot;
+    }
     
     /**
      * isVisible getter
