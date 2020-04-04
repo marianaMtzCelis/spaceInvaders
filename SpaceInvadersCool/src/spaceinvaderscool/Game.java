@@ -383,7 +383,11 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 480, this.width, 480);
             player.render(g);
-            g.drawString("Vidas:" + vidas, 30, 520);
+            g.drawString("Vidas:" + vidas, 20, 500);
+            g.drawString("Presione G para guardar", 20, 515);
+            g.drawString("Presione C para cargar", 20, 530);
+            g.drawString("Presione flechas para moverse", 20, 545);
+            g.drawString("Presione espacio para disparar", 20, 560);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
