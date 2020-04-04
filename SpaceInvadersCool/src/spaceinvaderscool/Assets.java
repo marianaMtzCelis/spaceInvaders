@@ -28,6 +28,7 @@ public class Assets {
     public static BufferedImage trash1;
     public static BufferedImage trash2;
     public static BufferedImage trash3;
+    public static BufferedImage gameOver;
     public static SoundClip attack;
     public static SoundClip attacked;
     public static SoundClip end;
@@ -47,6 +48,7 @@ public class Assets {
         trash1 = ImageLoader.loadImage("/images/trash1.png");
         trash2 = ImageLoader.loadImage("/images/trash2.png");
         trash3 = ImageLoader.loadImage("/images/trash3.png");
+        gameOver = ImageLoader.loadImage("/images/gameOver.jpg");
         
         // Getting sounds from file
         attack = new SoundClip("/sounds/attack.wav");

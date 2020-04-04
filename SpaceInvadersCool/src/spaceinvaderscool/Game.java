@@ -40,6 +40,7 @@ public class Game implements Runnable {
     private int vidas;
     private int score;
     private int[] highScores;       // to store the top five high scores  
+    private boolean gameOver;
 
     public void loadHighScores(String strFileName){
         try {
@@ -74,6 +75,7 @@ public class Game implements Runnable {
         highScores = new int[5];
         loadHighScores("HighScores.txt");
         score = 0;
+        gameOver = false;
         // line for debugging highscores later
 //        for (int i = 0; i < 5; i++)
 //            System.out.println(highScores[i]);
@@ -302,6 +304,8 @@ public class Game implements Runnable {
      * Ticks the whole game
      */
     private void tick() {
+        
+        if (!gameOver) {
 
         // Ticks each object
         keyManager.tick();
@@ -361,7 +365,13 @@ public class Game implements Runnable {
                 shotPlayer.setIsVisible(false);
                 Assets.attacked.play();
             }
+            
+            if (alien.getY() >= 380) {
+                gameOver = true;
+                Assets.end.play();
+            }
         }
+    }
 
     }
 
@@ -393,6 +403,10 @@ public class Game implements Runnable {
             for (Alien alien : listaAliens) {
                 alien.getShot().render(g);
                 alien.render(g);
+            }
+            
+            if (gameOver) {
+                g.drawImage(Assets.gameOver, 0, 0, width, height, null);
             }
 
 //            // displays vidas and score

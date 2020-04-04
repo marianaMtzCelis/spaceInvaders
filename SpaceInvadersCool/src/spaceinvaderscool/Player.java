@@ -131,8 +131,8 @@ public class Player extends Item {
         }
 
         // reset x position and y position if colision
-        if (getX() + 20 >= game.getWidth()) {
-            setX(game.getWidth() - 20);
+        if (getX() + 80 >= game.getWidth()) {
+            setX(game.getWidth() - 80);
         } else if (getX() <= 5) {
             setX(5);
         }
