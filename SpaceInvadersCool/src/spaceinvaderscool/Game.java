@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -315,6 +316,15 @@ public class Game implements Runnable {
         }
     }
 
+    private void updateHighScore(){
+        int[] allHighScores = new int[6];
+        for (int i = 0; i < 5; ++i){
+            allHighScores[0] = highScores[0];
+        }
+        allHighScores[5] = score;
+        Arrays.sort(allHighScores);
+    }
+    
     /**
      * Ticks the whole game
      */
@@ -381,6 +391,7 @@ public class Game implements Runnable {
                     if (vidas <= 0) {
                         gameOver = true;
                         Assets.end.play();
+                        updateHighScore();
                     }
                 }
 
