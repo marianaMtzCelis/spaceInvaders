@@ -15,9 +15,9 @@ public class Player extends Item {
 
     private int direction;  // to store player's direction
     private Game game;      // to access game's attributes
-    private Animation explosion;
-    private boolean justCrashed;
-    private int counterCrashed;
+    private Animation explosion;    // to store explosion animation
+    private boolean justCrashed;    // to store id player is crashed
+    private int counterCrashed;     // checks how much time has player been crashed
 
     /**
      * Player class constructor
@@ -36,7 +36,7 @@ public class Player extends Item {
         this.dx = 2;
         justCrashed = false;
         counterCrashed = 25;
-        
+
         this.explosion = new Animation(Assets.explosion, 20);
     }
 
@@ -48,7 +48,7 @@ public class Player extends Item {
     public int getDirection() {
         return direction;
     }
-    
+
     /**
      * gets the crashed counter of the player
      *
@@ -58,10 +58,14 @@ public class Player extends Item {
         return counterCrashed;
     }
 
+    /**
+     * counterCrashed setter
+     *
+     * @param counterCrashed
+     */
     public void setCounterCrashed(int counterCrashed) {
         this.counterCrashed = counterCrashed;
     }
-    
 
     /**
      * gets the width of the player
@@ -108,14 +112,23 @@ public class Player extends Item {
         this.height = height;
     }
 
+    /**
+     * justCrashed getter
+     *
+     * @return justCrashed
+     */
     public boolean isJustCrashed() {
         return justCrashed;
     }
 
+    /**
+     * justCrashed setter
+     *
+     * @param justCrashed
+     */
     public void setJustCrashed(boolean justCrashed) {
         this.justCrashed = justCrashed;
     }
-    
 
     /**
      * Ticks the player
@@ -136,7 +149,8 @@ public class Player extends Item {
         } else if (getX() <= 5) {
             setX(5);
         }
-        
+
+        // ticks explosion animation
         if (justCrashed) {
             explosion.tick();
         }
@@ -149,7 +163,7 @@ public class Player extends Item {
      */
     @Override
     public void render(Graphics g) {
-         if (justCrashed) {
+        if (justCrashed) {
             counterCrashed--;
             g.drawImage(explosion.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
             if (counterCrashed <= 0) {
@@ -158,7 +172,7 @@ public class Player extends Item {
                 this.game.getShotPlayer().setIsVisible(true);
             }
         } else {
-        g.drawImage(Assets.player, getX(), getY(), getWidth(), getHeight(), null);
-         }
+            g.drawImage(Assets.player, getX(), getY(), getWidth(), getHeight(), null);
+        }
     }
 }

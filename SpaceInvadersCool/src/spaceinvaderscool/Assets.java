@@ -9,36 +9,35 @@ import java.awt.image.BufferedImage;
 
 /**
  *
- * @author marianamtzcelis
+ * @author marianamtzcelis and diegomezcota
  */
 public class Assets {
 
-    public static BufferedImage background; // to store background image
-    public static BufferedImage player;     // to store player image
-    public static BufferedImage playerShot; // to store playerShot image
-    public static BufferedImage alienShot;  // to store alienShot image
-    public static BufferedImage alien;      // to store alien image
-    public static BufferedImage spritesPlasma;
-    public static BufferedImage spritesPlasma2;
-    public static BufferedImage plasma;
-    public static BufferedImage plasmaShock[];
-    public static BufferedImage plasmaShock2[];
-    public static BufferedImage spritesExplosion;
-    public static BufferedImage explosion[];
-    public static BufferedImage trash1;
-    public static BufferedImage trash2;
-    public static BufferedImage trash3;
-    public static BufferedImage gameOver;
-    public static SoundClip attack;
-    public static SoundClip attacked;
-    public static SoundClip end;
-    
+    public static BufferedImage background;     // to store background image
+    public static BufferedImage player;         // to store player image
+    public static BufferedImage playerShot;     // to store playerShot image
+    public static BufferedImage alienShot;      // to store alienShot image
+    public static BufferedImage alien;          // to store alien image
+    public static BufferedImage spritesPlasma;  // to store plasma sprites
+    public static BufferedImage spritesPlasma2; // to store plasma 2 sprites
+    public static BufferedImage plasma;         // to store plasma image
+    public static BufferedImage plasmaShock[];  // to store array of plasma images
+    public static BufferedImage plasmaShock2[]; // to store array of schocked plasma images
+    public static BufferedImage spritesExplosion;   // to store explosion sprites
+    public static BufferedImage explosion[];    // to store explosion array
+    public static BufferedImage trash1;         // to store apple image
+    public static BufferedImage trash2;         // to store banana image
+    public static BufferedImage trash3;         // to store wrapper image
+    public static BufferedImage gameOver;       // to store gameOver image
+    public static SoundClip attack;             // to store attack sound clip
+    public static SoundClip attacked;           // to store attacked sound clip 
+    public static SoundClip end;                // to store end sound clip
 
     /**
      * Initializing the images of the game
      */
     public static void init() {
-        
+
         // Getting images from file
         background = ImageLoader.loadImage("/images/background.png");
         player = ImageLoader.loadImage("/images/alien3.png");
@@ -49,12 +48,12 @@ public class Assets {
         trash2 = ImageLoader.loadImage("/images/trash2.png");
         trash3 = ImageLoader.loadImage("/images/trash3.png");
         gameOver = ImageLoader.loadImage("/images/gameOver.jpg");
-        
+
         // Getting sounds from file
         attack = new SoundClip("/sounds/attack.wav");
         attacked = new SoundClip("/sounds/attacked.wav");
         end = new SoundClip("/sounds/end.wav");
-        
+
         // Get images from a spriteSheet
         spritesPlasma = ImageLoader.loadImage("/images/plasma.png");
         SpriteSheet spriteSheetP = new SpriteSheet(spritesPlasma);
@@ -63,22 +62,23 @@ public class Assets {
         SpriteSheet spriteSheetP2 = new SpriteSheet(spritesPlasma2);
         spritesExplosion = ImageLoader.loadImage("/images/boomboom.png");
         SpriteSheet spriteSheetE = new SpriteSheet(spritesExplosion);
-        
+
         // Create arrays of images
         plasmaShock = new BufferedImage[3];
         plasmaShock2 = new BufferedImage[4];
         explosion = new BufferedImage[4];
-        
+
+        // Fills arrays of images for animations
         for (int i = 0; i < 3; i++) {
-            plasmaShock[i] = spriteSheetP.crop(i*263+33, 37, 263, 274);
+            plasmaShock[i] = spriteSheetP.crop(i * 263 + 33, 37, 263, 274);
         }
-        
+
         for (int i = 0; i < 4; i++) {
-            plasmaShock2[i] = spriteSheetP.crop(i*225+13, 45, 225, 167);
+            plasmaShock2[i] = spriteSheetP.crop(i * 225 + 13, 45, 225, 167);
         }
-        
-         for (int i = 0; i < 4; i++) {
-            explosion[i] = spriteSheetE.crop(i*220+45, 52, 220, 193);
+
+        for (int i = 0; i < 4; i++) {
+            explosion[i] = spriteSheetE.crop(i * 220 + 45, 52, 220, 193);
         }
 
     }
