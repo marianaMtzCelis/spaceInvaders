@@ -368,6 +368,7 @@ public class Game implements Runnable {
                     alien.getShot().setIsVisible(false);
                     Assets.attack.play();
                     score += 100;
+                    if (score % 1200 == 0 && vidas < 10) ++vidas; 
                 }
 
                 // checks player's colusion with alien bombs
