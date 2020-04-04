@@ -20,6 +20,7 @@ public class Shot extends Item {
     private boolean isVisible;
     private int counterCrashed;
     private Animation plasmaAnimation;
+    private int randTrash;
 
     /**
      * isVisible getter
@@ -65,6 +66,7 @@ public class Shot extends Item {
         isShot = false;
         isVisible = true;
         counterCrashed = 20;
+        randTrash = (int) (Math.random()*3)+1;
 
         this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
     }
@@ -81,7 +83,7 @@ public class Shot extends Item {
                 setY(y + dy); // Move upwards
                 plasmaAnimation.tick();
             } else {
-                setX(game.getPlayer().getX() + 15);
+                setX(game.getPlayer().getX() + 25);
                 setY(game.getPlayer().getY());
             }
 
@@ -98,8 +100,8 @@ public class Shot extends Item {
                 if (isShot) {
                     setY(y + dy); // Move downwards
                 } else {
-                    setX(item.getX() + 4);
-                    setY(item.getY() + 5);
+                    setX(item.getX() + 15);
+                    setY(item.getY() + 10);
                 }
 
                 // Checks lower boundary on y axis
@@ -151,7 +153,18 @@ public class Shot extends Item {
 
         // Alien's shot
         if (type == 1 && isVisible == true) {
-            g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
+            //g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
+            switch (randTrash) {
+                case 1:
+                    g.drawImage(Assets.trash1, getX(), getY(), getWidth(), getHeight(), null);
+                    break;
+                case 2:
+                    g.drawImage(Assets.trash2, getX(), getY(), getWidth(), getHeight(), null);
+                    break;
+                case 3:
+                    g.drawImage(Assets.trash3, getX(), getY(), getWidth(), getHeight(), null);
+                    break;
+            }
         }
 
     }
