@@ -292,7 +292,7 @@ public class Game implements Runnable {
                 // load alien info
                 int loadedX = Integer.parseInt(datos[nDatos++]);
                 int loadedY = Integer.parseInt(datos[nDatos++]);
-                Alien alienToSet = new Alien(loadedX, loadedY, 12, 12, this, 1);
+                Alien alienToSet = new Alien(loadedX, loadedY, 40, 40, this, 1);
                 alienToSet.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
                 alienToSet.setJustCrashed(Integer.parseInt(datos[nDatos++]) == 1);
                 alienToSet.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
@@ -300,7 +300,7 @@ public class Game implements Runnable {
                 // load alien shot info
                 loadedX = Integer.parseInt(datos[nDatos++]);
                 loadedY = Integer.parseInt(datos[nDatos++]);
-                Shot shotToSet = new Shot(loadedX, loadedY, 3, 5, 2, alienToSet, 1, this);
+                Shot shotToSet = new Shot(loadedX, loadedY, 20, 20, 2, alienToSet, 1, this);
                 shotToSet.setIsShot(Integer.parseInt(datos[nDatos++]) == 1);
                 shotToSet.setIsVisible(Integer.parseInt(datos[nDatos++]) == 1);
                 shotToSet.setCounterCrashed(Integer.parseInt(datos[nDatos++]));
@@ -476,19 +476,6 @@ public class Game implements Runnable {
                 
             }
 
-//            // displays vidas and score
-//            g.setColor(Color.black);
-//            g.drawString("Vidas:" + vidas, 100, 100);
-//            g.drawString("Score: " + score, 100, 120);
-            // displays end image if vidas gets to 0 
-//            if (vidas <= 0) {
-//                g.drawImage(Assets.end, 0, 0, getWidth(), getHeight(), null);
-//                Assets.backSound.stop();
-//                Assets.buenos.stop();
-//                Assets.malos.stop();
-//              
-//                
-//            }
             bs.show();
             g.dispose();
         }
