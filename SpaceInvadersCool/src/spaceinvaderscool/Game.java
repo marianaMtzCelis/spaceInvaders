@@ -329,7 +329,6 @@ public class Game implements Runnable {
         Arrays.sort(allHighScores);
         for (int i = 0; i < 5; ++i){
             highScores[i] = allHighScores[5-i];
-            System.out.println(highScores[i]);
         }
         try{
             PrintWriter writer = new PrintWriter(new FileWriter("HighScores.txt"));
