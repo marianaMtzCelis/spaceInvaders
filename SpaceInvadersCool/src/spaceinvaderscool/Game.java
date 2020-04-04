@@ -119,7 +119,7 @@ public class Game implements Runnable {
         display = new Display(title, getWidth(), getHeight());
         Assets.init();
 
-        player = new Player(this.width/2, 450, 1, 40, 30, this);
+        player = new Player(this.width/2, 420, 1, 70, 70, this);
 
         display.getJframe().addKeyListener(keyManager);
 
@@ -133,12 +133,12 @@ public class Game implements Runnable {
             int xo = 150; //  initial x  value
             for (int j = 1; j <= 6; j++) {
                 // create each alien
-                Alien alien = new Alien(xo, yo, 30, 30, this, 1);
+                Alien alien = new Alien(xo, yo, 40, 40, this, 1);
                 // add each alien to the linked list
                 listaAliens.add(alien);
                 xo += 50; // update x position
             }
-            yo += 30; // update y position
+            yo += 40; // update y position
         }
 
     }
@@ -332,9 +332,9 @@ public class Game implements Runnable {
 
             
             // Repositions aliens once they get to the boundaries on the x axis
-            if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 10) {
+            if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 40) {
                 for (Alien alien2 : listaAliens) {
-                    alien2.setY(alien2.getY() + 15);
+                    alien2.setY(alien2.getY() + 20);
                     // Changes alien's direction 
                     if (alien2.getDirection() == 0) {
                         alien2.setDirection(1);

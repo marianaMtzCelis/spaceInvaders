@@ -25,6 +25,9 @@ public class Assets {
     public static BufferedImage plasmaShock2[];
     public static BufferedImage spritesExplosion;
     public static BufferedImage explosion[];
+    public static BufferedImage trash1;
+    public static BufferedImage trash2;
+    public static BufferedImage trash3;
     
 
     /**
@@ -34,10 +37,13 @@ public class Assets {
         
         // Getting images from file
         background = ImageLoader.loadImage("/images/background.png");
-        player = ImageLoader.loadImage("/images/player.png");
+        player = ImageLoader.loadImage("/images/alien3.png");
         playerShot = ImageLoader.loadImage("/images/shot.png");
         alienShot = ImageLoader.loadImage("/images/bomb.png");
-        alien = ImageLoader.loadImage("/images/alien.png");
+        alien = ImageLoader.loadImage("/images/enemy.png");
+        trash1 = ImageLoader.loadImage("/images/trash1.png");
+        trash2 = ImageLoader.loadImage("/images/trash2.png");
+        trash3 = ImageLoader.loadImage("/images/trash3.png");
         
         // Get images from a spriteSheet
         spritesPlasma = ImageLoader.loadImage("/images/plasma.png");
@@ -62,7 +68,7 @@ public class Assets {
         }
         
          for (int i = 0; i < 4; i++) {
-            explosion[i] = spriteSheetE.crop(i*220+22, 52, 220, 193);
+            explosion[i] = spriteSheetE.crop(i*220+45, 52, 220, 193);
         }
 
     }
