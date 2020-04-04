@@ -413,10 +413,11 @@ public class Game implements Runnable {
             player.render(g);
 
             // renders instructions for user
-            g.drawString("Presione G para guardar", 20, 500);
-            g.drawString("Presione C para cargar", 20, 515);
-            g.drawString("Presione flechas para moverse", 20, 530);
-            g.drawString("Presione espacio para disparar", 20, 545);
+            g.drawString("Score: " + score, 20, 500);
+            g.drawString("Presione G para guardar", 20, 515);
+            g.drawString("Presione C para cargar", 20, 530);
+            g.drawString("Presione flechas para moverse", 20, 545);
+            g.drawString("Presione espacio para disparar", 20, 560);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
