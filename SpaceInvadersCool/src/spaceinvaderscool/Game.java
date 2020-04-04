@@ -369,6 +369,7 @@ public class Game implements Runnable {
                 Assets.attacked.play();
                 if (vidas <= 0) {
                     gameOver = true;
+                    Assets.end.play();
                 }
             }
             
