@@ -21,6 +21,7 @@ public class Shot extends Item {
     private int counterCrashed;     // to store how much time has the shot being shot
     private Animation plasmaAnimation;  // to store plasma animation
     private int randTrash;          // to store random item to be thrown by spaceman
+    private boolean missedShot;
 
     /**
      * Shot class constructor
@@ -45,10 +46,14 @@ public class Shot extends Item {
         isVisible = true;
         counterCrashed = 20;
         randTrash = (int) (Math.random() * 3) + 1; // Generates random number to set which type of trash to throw
-
+        missedShot = false;
         this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
     }
 
+    public boolean isMissedShot() {
+        return missedShot;
+    }
+    
     /**
      * isVisible getter
      *
@@ -85,6 +90,7 @@ public class Shot extends Item {
         // Player type of shot
         if (type == 0) {
             if (isShot) {
+                missedShot = false;
                 setY(y + dy); // Move upwards
                 plasmaAnimation.tick();
             } else {
@@ -95,6 +101,7 @@ public class Shot extends Item {
             // Checks upper boundary on y axis
             if (y <= 0) {
                 isShot = false;
+                missedShot = true;
             }
 
         }
