@@ -396,6 +396,7 @@ public class Game implements Runnable {
                     if (score % 1200 == 0 && vidas < 10) ++vidas; 
                     enemies--;
                     if (enemies <= 0) {
+                        updateHighScore();
                         winner = true;
                         Assets.end.play();
                     }
