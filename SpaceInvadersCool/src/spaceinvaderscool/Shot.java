@@ -17,33 +17,11 @@ public class Shot extends Item {
     private boolean isShot;         // to establish if the shot is being shot
     private Game game;              // to access game's attributes
     private Item item;              // to know who does the shot belong to
-    private boolean isVisible;
-    private int counterCrashed;
-    private Animation plasmaAnimation;
-    private int randTrash;
+    private boolean isVisible;      // to store if shot is visible
+    private int counterCrashed;     // to store how much time has the shot being shot
+    private Animation plasmaAnimation;  // to store plasma animation
+    private int randTrash;          // to store random item to be thrown by spaceman
 
-    /**
-     * isVisible getter
-     *
-     * @return isVisible
-     */
-    public boolean isIsVisible() {
-        return isVisible;
-    }
-    
-     /**
-     * counterCrashed getter
-     *
-     * @return counterCrashed
-     */
-    public int getCounterCrashed() {
-        return counterCrashed;
-    }
-
-    public void setCounterCrashed(int counterCrashed) {
-        this.counterCrashed = counterCrashed;
-    }
-    
     /**
      * Shot class constructor
      *
@@ -66,9 +44,36 @@ public class Shot extends Item {
         isShot = false;
         isVisible = true;
         counterCrashed = 20;
-        randTrash = (int) (Math.random()*3)+1;
+        randTrash = (int) (Math.random() * 3) + 1; // Generates random number to set which type of trash to throw
 
         this.plasmaAnimation = new Animation(Assets.plasmaShock, 100);
+    }
+
+    /**
+     * isVisible getter
+     *
+     * @return isVisible
+     */
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    /**
+     * counterCrashed getter
+     *
+     * @return counterCrashed
+     */
+    public int getCounterCrashed() {
+        return counterCrashed;
+    }
+
+    /**
+     * counterCrashed setter
+     *
+     * @param counterCrashed
+     */
+    public void setCounterCrashed(int counterCrashed) {
+        this.counterCrashed = counterCrashed;
     }
 
     /**
@@ -146,14 +151,12 @@ public class Shot extends Item {
 
         // Player's shot
         if (type == 0 && isVisible == true) {
-            //g.drawImage(Assets.playerShot, getX(), getY(), getWidth(), getHeight(), null);
-            // g.drawImage(Assets.plasma, getX(), getY(), getWidth(), getHeight(), null);
             g.drawImage(plasmaAnimation.getCurrentFrame(), getX(), getY(), getWidth(), getHeight(), null);
         }
 
         // Alien's shot
         if (type == 1 && isVisible == true) {
-            //g.drawImage(Assets.alienShot, getX(), getY(), getWidth(), getHeight(), null);
+            // Renders image depending on the random number
             switch (randTrash) {
                 case 1:
                     g.drawImage(Assets.trash1, getX(), getY(), getWidth(), getHeight(), null);

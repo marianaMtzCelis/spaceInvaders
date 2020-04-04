@@ -39,11 +39,17 @@ public class Game implements Runnable {
     private LinkedList<Alien> listaAliens; // to store miltiple Aliens
     private LinkedList<Alien> nuevosAliens; // to store miltiple Aliens
     private boolean isPaused;       // to pause or unpause game
-    private int vidas;
-    private int score;
+    private int vidas;              // to store vidas value
+    private int score;              // to store game score
     private int[] highScores;       // to store the top five high scores  
+    private boolean gameOver;       // to store if game is over or not
 
-    public void loadHighScores(String strFileName){
+    /**
+     * Loads High Scores from file
+     *
+     * @param strFileName
+     */
+    public void loadHighScores(String strFileName) {
         try {
             FileReader file = new FileReader(strFileName);
             BufferedReader reader = new BufferedReader(file);
@@ -51,14 +57,14 @@ public class Game implements Runnable {
             String datos[];
             line = reader.readLine();
             datos = line.split("/");
-            for (int i = 0; i < 5; ++i){
+            for (int i = 0; i < 5; ++i) {
                 highScores[i] = Integer.parseInt(datos[i]);
             }
         } catch (IOException e) {
             System.out.println("File Not found CALL 911");
         }
     }
-    
+
     /**
      * to create title, width and height and set the game is still not running
      *
@@ -72,10 +78,11 @@ public class Game implements Runnable {
         this.height = height;
         running = false;
         keyManager = new KeyManager();
-        vidas = 5;
+        vidas = 10;
         highScores = new int[5];
         loadHighScores("HighScores.txt");
         score = 0;
+        gameOver = false;
         // line for debugging highscores later
 //        for (int i = 0; i < 5; i++)
 //            System.out.println(highScores[i]);
@@ -111,8 +118,6 @@ public class Game implements Runnable {
     public Shot getShotPlayer() {
         return shotPlayer;
     }
-    
-    
 
     /**
      * initializing the display window of the game
@@ -121,7 +126,7 @@ public class Game implements Runnable {
         display = new Display(title, getWidth(), getHeight());
         Assets.init();
 
-        player = new Player(this.width/2, 420, 1, 70, 70, this);
+        player = new Player(this.width / 2 - 35, 420, 1, 70, 70, this);
 
         display.getJframe().addKeyListener(keyManager);
 
@@ -187,7 +192,12 @@ public class Game implements Runnable {
     public KeyManager getKeyManager() {
         return keyManager;
     }
-    
+
+    /**
+     * Saves current game into txt file
+     *
+     * @param strFileName
+     */
     private void Save(String strFileName) {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(strFileName));
@@ -195,7 +205,7 @@ public class Game implements Runnable {
             int vidasToSave = this.vidas;
             int scoreToSave = this.score;
             //  saving more attributes
-            writer.print("" + vidasToSave + "/" + scoreToSave + "/" );
+            writer.print("" + vidasToSave + "/" + scoreToSave + "/");
             //  store player progress
             boolean bJustCrashed = this.player.isJustCrashed();
             int iJustCrashed = bJustCrashed == true ? 1 : 0;
@@ -218,7 +228,7 @@ public class Game implements Runnable {
             boolean alien_bIsVisible, alien_bJustCrashed, as_bIsShot, as_bIsVisible;
             int alien_iIsVisible, alien_iJustCrashed, alien_iCounterCrashed, as_iIsShot, as_iIsVisible, as_counterCrashed;
             Shot alienShot;
-            for (Alien alien : listaAliens){
+            for (Alien alien : listaAliens) {
                 alien_x = alien.getX();
                 alien_y = alien.getY();
                 alien_bIsVisible = alien.isIsVisible();
@@ -244,7 +254,12 @@ public class Game implements Runnable {
         }
     }
 
-        public void Load(String strFileName) {
+    /**
+     * Loads previously saved game from txt file
+     *
+     * @param strFileName
+     */
+    public void Load(String strFileName) {
         try {
             // to read from file
             FileReader file = new FileReader(strFileName);
@@ -305,63 +320,76 @@ public class Game implements Runnable {
      */
     private void tick() {
 
-        // Ticks each object
-        keyManager.tick();
-        player.tick();
-        shotPlayer.tick();
+        if (!gameOver) {
 
-        // Checks if the user pressed the save option
-        if (getKeyManager().save) {
-            getKeyManager().releaseKey(KeyEvent.VK_G);
-            Save("Progress.txt");
-        }
-        
-        // Checks if the user pressed the load option
-        if (getKeyManager().load) {
-            //isPaused = true;
-            getKeyManager().releaseKey(KeyEvent.VK_C);
-            Load("Progress.txt");
-        }
-        
-        // player shoots when user clicks the space bar
-        if (keyManager.space) {
-            shotPlayer.setIsShot(true);
-        }
-        
+            // Ticks each object
+            keyManager.tick();
+            player.tick();
+            shotPlayer.tick();
 
-        for (Alien alien : listaAliens) {
-            alien.tick(); // ticks each alien
+            // Checks if the user pressed the save option
+            if (getKeyManager().save) {
+                getKeyManager().releaseKey(KeyEvent.VK_G);
+                Save("Progress.txt");
+            }
 
-            
-            // Repositions aliens once they get to the boundaries on the x axis
-            if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 40) {
-                for (Alien alien2 : listaAliens) {
-                    alien2.setY(alien2.getY() + 20);
-                    // Changes alien's direction 
-                    if (alien2.getDirection() == 0) {
-                        alien2.setDirection(1);
-                    } else {
-                        alien2.setDirection(0);
+            // Checks if the user pressed the load option
+            if (getKeyManager().load) {
+                //isPaused = true;
+                getKeyManager().releaseKey(KeyEvent.VK_C);
+                Load("Progress.txt");
+            }
+
+            // player shoots when user clicks the space bar
+            if (keyManager.space) {
+                shotPlayer.setIsShot(true);
+            }
+
+            for (Alien alien : listaAliens) {
+                alien.tick(); // ticks each alien
+
+                // Repositions aliens once they get to the boundaries on the x axis
+                if (alien.getX() <= 10 || alien.getX() >= this.getWidth() - 40) {
+                    for (Alien alien2 : listaAliens) {
+                        alien2.setY(alien2.getY() + 20);
+                        // Changes alien's direction 
+                        if (alien2.getDirection() == 0) {
+                            alien2.setDirection(1);
+                        } else {
+                            alien2.setDirection(0);
+                        }
                     }
                 }
-            }
-            
-            
-            // checks if aliens and shotPlayer collide
-            if (shotPlayer.colision(alien)) {
-                shotPlayer.setIsShot(false); 
-                alien.setJustCrashed(true);
-                alien.getShot().setIsVisible(false);
-                Assets.attack.play();
-            }
-            
-            // checks player's colusion with alien bombs
-            if (player.colision(alien.getShot())) {
-                vidas--;
-                alien.getShot().setIsShot(false);
-                player.setJustCrashed(true);
-                shotPlayer.setIsVisible(false);
-                Assets.attacked.play();
+
+                // checks if aliens and shotPlayer collide
+                if (shotPlayer.colision(alien)) {
+                    shotPlayer.setIsShot(false);
+                    alien.setJustCrashed(true);
+                    alien.getShot().setIsVisible(false);
+                    Assets.attack.play();
+                    if (vidas < 10) {
+                        vidas++;
+                    }
+                }
+
+                // checks player's colusion with alien bombs
+                if (player.colision(alien.getShot())) {
+                    vidas--;
+                    alien.getShot().setIsShot(false);
+                    player.setJustCrashed(true);
+                    shotPlayer.setIsVisible(false);
+                    Assets.attacked.play();
+                    if (vidas <= 0) {
+                        gameOver = true;
+                        Assets.end.play();
+                    }
+                }
+
+                // checks y position of alien 
+                if (alien.getY() >= 380) {
+                    gameOver = true;
+                    Assets.end.play();
+                }
             }
         }
 
@@ -385,12 +413,68 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 480, this.width, 480);
             player.render(g);
-            g.drawString("Vidas:" + vidas, 30, 520);
+
+            // renders instructions for user
+            g.drawString("Score: " + score, 20, 500);
+            g.drawString("Presione G para guardar", 20, 515);
+            g.drawString("Presione C para cargar", 20, 530);
+            g.drawString("Presione flechas para moverse", 20, 545);
+            g.drawString("Presione espacio para disparar", 20, 560);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
                 alien.getShot().render(g);
                 alien.render(g);
+            }
+
+            // renders vidas rectangle
+            g.drawString("Vidas:" + vidas, 620, 560);
+            g.drawRect(470, 500, 200, 40);
+            switch (vidas) {
+                case 10:
+                    g.fillRect(470, 500, 200, 40);
+                    break;
+                case 9:
+                    g.fillRect(470, 500, 180, 40);
+                    break;
+                case 8:
+                    g.fillRect(470, 500, 160, 40);
+                    break;
+                case 7:
+                    g.fillRect(470, 500, 140, 40);
+                    break;
+                case 6:
+                    g.fillRect(470, 500, 120, 40);
+                    break;
+                case 5:
+                    g.fillRect(470, 500, 100, 40);
+                    break;
+                case 4:
+                    g.fillRect(470, 500, 80, 40);
+                    break;
+                case 3:
+                    g.fillRect(470, 500, 60, 40);
+                    break;
+                case 2:
+                    g.fillRect(470, 500, 40, 40);
+                    break;
+                case 1:
+                    g.fillRect(470, 500, 20, 40);
+                    break;
+            }
+
+            // renders game over image and high scores
+            if (gameOver) {
+                g.drawImage(Assets.gameOver, 0, 0, width, height, null);
+                g.setColor(Color.cyan);
+                g.drawRect(width/2-200, height/2, 400, 150);
+                g.drawString("High Scores", width/2-180, height/2 + 30);
+                g.drawString("1) ", width/2-180, height/2 + 50);
+                g.drawString("2) ", width/2-180, height/2 + 65);
+                g.drawString("3) ", width/2-180, height/2 + 80);
+                g.drawString("4) ", width/2-180, height/2 + 95);
+                g.drawString("5) ", width/2-180, height/2 + 110);
+                
             }
 
 //            // displays vidas and score
