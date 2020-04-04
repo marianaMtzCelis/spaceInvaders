@@ -119,7 +119,7 @@ public class Game implements Runnable {
         display = new Display(title, getWidth(), getHeight());
         Assets.init();
 
-        player = new Player(this.width/2, 420, 1, 70, 70, this);
+        player = new Player(this.width/2-35, 420, 1, 70, 70, this);
 
         display.getJframe().addKeyListener(keyManager);
 
