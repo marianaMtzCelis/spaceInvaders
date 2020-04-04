@@ -460,9 +460,18 @@ public class Game implements Runnable {
                     break;
             }
 
-            // renders game over image
+            // renders game over image and high scores
             if (gameOver) {
                 g.drawImage(Assets.gameOver, 0, 0, width, height, null);
+                g.setColor(Color.cyan);
+                g.drawRect(width/2-200, height/2, 400, 150);
+                g.drawString("High Scores", width/2-180, height/2 + 30);
+                g.drawString("1) ", width/2-180, height/2 + 50);
+                g.drawString("2) ", width/2-180, height/2 + 65);
+                g.drawString("3) ", width/2-180, height/2 + 80);
+                g.drawString("4) ", width/2-180, height/2 + 95);
+                g.drawString("5) ", width/2-180, height/2 + 110);
+                
             }
 
 //            // displays vidas and score
