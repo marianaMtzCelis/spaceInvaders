@@ -323,6 +323,17 @@ public class Game implements Runnable {
         }
         allHighScores[5] = score;
         Arrays.sort(allHighScores);
+        for (int i = 0; i < 5; ++i){
+            highScores[i] = allHighScores[5-i];
+            System.out.println(highScores[i]);
+        }
+        try{
+            PrintWriter writer = new PrintWriter(new FileWriter("HighScores.txt"));
+            writer.print("" + highScores[0] + "/" + highScores[1] + "/" + highScores[2] + "/" + highScores[3] + "/" + highScores[4]);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("File Not found CALL 911");
+        }
     }
     
     /**
@@ -389,9 +400,9 @@ public class Game implements Runnable {
                     shotPlayer.setIsVisible(false);
                     Assets.attacked.play();
                     if (vidas <= 0) {
+                        updateHighScore();
                         gameOver = true;
                         Assets.end.play();
-                        updateHighScore();
                     }
                 }
 
