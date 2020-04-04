@@ -387,14 +387,15 @@ public class Game implements Runnable {
 
                 // checks if aliens and shotPlayer collide
                 if (shotPlayer.colision(alien)) {
+                    enemies--;
                     shotPlayer.setIsShot(false);
                     alien.setJustCrashed(true);
                     alien.getShot().setIsVisible(false);
                     Assets.attack.play();
                     score += 100;
                     if (score % 1200 == 0 && vidas < 10) ++vidas; 
-                    enemies--;
                     if (enemies <= 0) {
+                        score += (vidas * 100);
                         updateHighScore();
                         winner = true;
                         Assets.end.play();
