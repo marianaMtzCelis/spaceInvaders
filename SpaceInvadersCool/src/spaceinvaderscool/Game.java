@@ -71,7 +71,7 @@ public class Game implements Runnable {
         this.height = height;
         running = false;
         keyManager = new KeyManager();
-        vidas = 5;
+        vidas = 10;
         highScores = new int[5];
         loadHighScores("HighScores.txt");
         score = 0;
@@ -355,6 +355,9 @@ public class Game implements Runnable {
                 alien.setJustCrashed(true);
                 alien.getShot().setIsVisible(false);
                 Assets.attack.play();
+                if (vidas < 10) {
+                    vidas++;
+                }
             }
             
             // checks player's colusion with alien bombs
@@ -364,6 +367,9 @@ public class Game implements Runnable {
                 player.setJustCrashed(true);
                 shotPlayer.setIsVisible(false);
                 Assets.attacked.play();
+                if (vidas <= 0) {
+                    gameOver = true;
+                }
             }
             
             if (alien.getY() >= 380) {
@@ -393,16 +399,50 @@ public class Game implements Runnable {
             g.setColor(Color.green);
             g.drawLine(0, 480, this.width, 480);
             player.render(g);
-            g.drawString("Vidas:" + vidas, 20, 500);
-            g.drawString("Presione G para guardar", 20, 515);
-            g.drawString("Presione C para cargar", 20, 530);
-            g.drawString("Presione flechas para moverse", 20, 545);
-            g.drawString("Presione espacio para disparar", 20, 560);
+            g.drawString("Presione G para guardar", 20, 500);
+            g.drawString("Presione C para cargar", 20, 515);
+            g.drawString("Presione flechas para moverse", 20, 530);
+            g.drawString("Presione espacio para disparar", 20, 545);
 
             // renders each alien on the linked list and each alien's shot
             for (Alien alien : listaAliens) {
                 alien.getShot().render(g);
                 alien.render(g);
+            }
+            
+            g.drawString("Vidas:" + vidas, 620, 560);
+            g.drawRect (470, 500, 200, 40);
+            switch (vidas) {
+                case 10:
+                    g.fillRect(470, 500, 200, 40);
+                    break;
+                case 9:
+                    g.fillRect(470, 500, 180, 40);
+                    break;
+                case 8:
+                    g.fillRect(470, 500, 160, 40);
+                    break;
+                case 7:
+                    g.fillRect(470, 500, 140, 40);
+                    break;
+                case 6:
+                    g.fillRect(470, 500, 120, 40);
+                    break;
+                case 5:
+                    g.fillRect(470, 500, 100, 40);
+                    break;
+                case 4:
+                    g.fillRect(470, 500, 80, 40);
+                    break;
+                case 3:
+                    g.fillRect(470, 500, 60, 40);
+                    break;
+                case 2:
+                    g.fillRect(470, 500, 40, 40);
+                    break;
+                case 1:
+                    g.fillRect(470, 500, 20, 40);
+                    break;
             }
             
             if (gameOver) {
