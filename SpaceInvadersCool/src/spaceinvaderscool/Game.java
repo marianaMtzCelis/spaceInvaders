@@ -398,7 +398,7 @@ public class Game implements Runnable {
                     alien.getShot().setIsVisible(false);
                     Assets.attack.play();
                     score += 100;
-                    if (score % 1200 == 0 && vidas < 10) ++vidas; 
+                    if (score % 600 == 0 && vidas < 10) ++vidas; 
                     if (enemies <= 0) {
                         score += (vidas * 100);
                         updateHighScore();
